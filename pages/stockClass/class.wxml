@@ -1,0 +1,9 @@
+<!--pages/stockClass/class.wxml-->
+<!-- 分类 -->
+<van-tree-select class="tree"
+  items="{{ items }}"
+  main-active-index="{{ mainActiveIndex }}"
+  active-id="{{ activeId }}"
+  bind:click-nav="onClickNav"
+  bind:click-item="onClickItem"
+/>

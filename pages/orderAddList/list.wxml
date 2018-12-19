@@ -1,0 +1,39 @@
+<!--pages/orderAddList/list.wxml-->
+<view class='body'>
+
+  <!-- <view class='center-info'> 
+      <view>Empty</view>
+  </view> -->
+
+  <demo-block title="订单名">
+    <van-cell-group>
+      <van-field value="{{ username }}" name="username" label="订单名" placeholder="请输入订单名" clearable bind:blur="addUsername"/>
+    </van-cell-group>
+  </demo-block>
+
+  <demo-block title="订单列表">
+    <van-cell-group wx:for="{{addList}}" wx:for-item="item" wx:key="index">
+      <van-cell wx:if="{{ item != null }}" title="规格:{{ item.type }}" value="数量:{{ item.number }}" label="螺纹:{{ item.whorl }}" clickable="true" id="{{ index }}" bind:click="detail"/>
+    </van-cell-group>
+  </demo-block>
+
+  <!-- TODO: 添加列表中的cell可操作性 -->
+
+
+  <!-- 添加按钮 & 添加icon -->
+  
+  <view class="bottom-box" bindtap="addOrder">
+    <view class='add-icon'> 
+      <van-icon custom-class="icon" name="add-o" size='20px' color='#33A3F4'/>
+    </view>
+  </view>
+  <view class='bottom-text' bindtap="addOrder">
+    <view class="add-btn">新增货物</view>
+  </view>
+
+  <!-- 完成按钮 -->
+  <view class='bottom-finish-text' bindtap="finishOrder">
+    <view class="finish-btn">完成</view>
+  </view>
+
+</view>

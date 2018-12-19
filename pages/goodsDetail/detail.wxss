@@ -1,0 +1,5 @@
+/* pages/goodsDetail/detail.wxss */
+
+.remove-btn {
+  margin-top: 30rpx;
+}

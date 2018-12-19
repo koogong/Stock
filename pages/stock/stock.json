@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "库存",
+
+  "usingComponents": {
+    "van-search": "../../dist/search/index",
+    "van-tree-select": "../../dist/tree-select/index",
+    "van-row": "../../dist/row/index",
+    "van-col": "../../dist/col/index",
+    "van-icon": "../../dist/icon/index",
+    "van-cell-group": "../../dist/cell-group/index",
+    "van-cell": "../../dist/cell/index",
+    "van-tag": "../../dist/tag/index"
+  }
+}

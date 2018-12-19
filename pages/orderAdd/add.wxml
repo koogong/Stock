@@ -1,0 +1,25 @@
+<!--pages/orderAdd/add.wxml-->
+<view class="body">
+  <form bindsubmit='addOrder'>
+    <demo-block>
+      <van-cell-group>
+        <!-- 规格 -->
+        <van-field value="{{ type }}" name="type" label="规格" placeholder="请输入规格" />
+
+        <!-- 螺纹 -->
+        <van-field value="{{ whorl }}" name="whorl" label="螺纹" placeholder="请输入螺纹" />
+
+        <!-- 数量 -->
+        <van-field value="{{ number }}" name="number" label="数量" type="digit" placeholder="请输入数量" />
+
+        <!-- 件数 -->
+        <van-field value="{{ piece }}" name="piece" label="件数" type="digit" placeholder="请输入件数" />
+
+
+        <!-- 备注 -->
+        <van-field value="{{ message }}" name="message" label="备注" type="textarea" placeholder="请输入备注" autosize border="{{ false }}" />
+        <button class='finish-btn' type='warn' form-type='submit'>添加订单</button>
+      </van-cell-group>
+    </demo-block>
+  </form>
+</view>

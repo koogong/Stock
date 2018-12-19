@@ -1,0 +1,65 @@
+/* pages/orderAddList/list.wxss */
+
+.center-info {
+  /* text-align: center; */
+  margin-top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:#000000;
+}
+.bottom-box{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    font-size:28rpx;
+    color:#000000;
+    border-top: 1rpx solid #eee;
+    height:100rpx;
+    line-height: 100rpx;
+    background-size: 15rpx auto;
+}
+
+.bottom-text {
+  position: fixed;
+  bottom: 0;
+  font-size: 28rpx;
+  color:#000000;
+  height: 100rpx;
+  border-top: 1rpx solid #eee;
+  padding-left: 100rpx;
+}
+
+.add-btn {
+  width: 150rpx;
+  text-align: center;
+  line-height: 100rpx;
+}
+
+.bottom-finish-text {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  font-size: 28rpx;
+  color:#fff;
+  height: 100rpx;
+  border-top: 1rpx solid #eee;
+
+  width: 250rpx;
+  background-color: #33A3F4;
+}
+.finish-btn {
+  width: 250rpx;
+  text-align: center;
+  line-height: 100rpx;
+}
+
+.add-icon {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.add-icon .icon {
+  line-height: 100rpx;
+  margin-left: 40rpx;
+} 

@@ -1,0 +1,73 @@
+<!--pages/home/home.wxml-->
+<view class='body'>
+  <van-tabs bind:change="onChange">
+
+  <!-- 造型 -->
+  <van-tab title="{{ section[0] }}">
+    <demo-block title="待完成列表">
+      <van-cell-group>
+
+        <!-- 待完成信息 -->
+        <van-cell value="客户1" is-link bind:click="pending">
+          <view slot="title">
+            <view class="title">60x90</view>
+            <van-tag type="danger">急需</van-tag>
+          </view>
+        </van-cell>
+
+        <!-- 待完成信息 -->
+        <van-cell value="客户1" label="30x2 2件" is-link bind:click="pending">
+          <view slot="title">
+            <view class="title" label="30x2 2件">50x90</view>
+          </view>
+        </van-cell>
+        
+        <!-- 待完成信息 -->
+        <van-cell title="70x90" value="客户1" label="30x2 2件" is-link bind:click="pending"/>
+      </van-cell-group>
+    </demo-block>
+  
+  </van-tab>
+
+
+  <!-- 浇铸 -->
+  <van-tab title="{{ section[1] }}">
+    <demo-block title="待完成列表">
+      <van-cell-group>
+        <van-cell value="客户1" is-link bind:click="pending">
+          <view slot="title">
+            <view class="title">60x90</view>
+            <van-tag type="danger">急需</van-tag>
+          </view>
+        </van-cell>
+
+        <van-cell value="客户1" is-link bind:click="pending"> 
+          <view slot="title">
+            <view class="title" label="30x2 2件">50x90</view>
+          </view>
+        </van-cell>
+
+        <van-cell title="70x90" value="客户1" is-link bind:click="pending"/>
+      </van-cell-group>
+    </demo-block>
+  </van-tab>
+
+
+  <!-- 喷砂 -->
+  <van-tab title="{{ section[2] }}">内容 3</van-tab>
+
+  <!-- 加工 -->
+  <van-tab title="{{ section[3] }}">内容 4</van-tab>
+
+  <!-- 淬火 -->
+  <van-tab title="{{ section[4] }}">内容 5</van-tab>
+
+  <!-- 车磨 -->
+  <van-tab title="{{ section[5] }}">内容 6</van-tab>
+
+  <!-- 装箱 -->
+  <van-tab title="{{ section[6] }}">内容 6</van-tab>
+
+</van-tabs>
+
+</view>

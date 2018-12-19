@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "订单添加列表",
+  "usingComponents": {
+    "van-field": "../../dist/field/index",
+    "van-cell-group": "../../dist/cell-group/index",
+    "van-cell": "../../dist/cell/index",
+    "van-icon": "../../dist/icon/index",
+    "demo-block": "../../components/demo-block/index"
+  }
+}

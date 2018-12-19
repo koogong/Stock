@@ -1,0 +1,33 @@
+<!--pages/pending/pending.wxml-->
+
+<view wx:if="{{ pending }}">
+  <van-panel title="60x90" desc="30x2 300个" status="待完成" />
+
+  <view>
+    <button class='finishBtn' type='primary' form-type='submit'>接受</button>
+  </view>
+</view>
+
+<view wx:else>
+  <van-panel title="60x90" desc="30x2 300个" status="待完成" />
+  <van-panel use-footer-slot>
+    <form bindsubmit='finish'>
+      <van-cell-group>
+        <van-field name="value" type="digit" label="实际完成量" placeholder="完成量" border="{{false}}" />
+
+        <van-field name="rejected" type="digit" label="报废量" placeholder="报废量" border="{{false}}" />
+
+        <van-field name="remark" type="textarea" label="备注" placeholder="备注" border="{{false}}" />
+      </van-cell-group>
+
+
+      <!-- 备注 -->
+      <view class="content">备注</view>
+      <view slot="footer" class="footer">
+        <view>
+          <button class='finishBtn' type='warn' form-type='submit'>完成</button>
+        </view>
+      </view>
+    </form>
+  </van-panel>
+</view>

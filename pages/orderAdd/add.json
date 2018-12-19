@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "添加订单",
+  "usingComponents": {
+    "demo-block": "../../components/demo-block/index",
+    "van-cell": "../../dist/cell/index",
+    "van-cell-group": "../../dist/cell-group/index",
+    "van-field": "../../dist/field/index"
+  }
+}

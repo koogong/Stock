@@ -1,0 +1,19 @@
+/* pages/home/home.wxss */
+.content {
+  padding: 20px;
+  background-color: #fff;
+}
+
+.body {
+  overflow-x: hidden;
+}
+
+.content-2 {
+  padding: 20px;
+}
+
+.title {
+  margin-right: 5px;
+  display: inline-block;
+  vertical-align: middle;
+}

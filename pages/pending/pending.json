@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "待完成",
+  "usingComponents": {
+    "demo-block": "../../components/demo-block/index",
+    "van-cell": "../../dist/cell/index",
+    "van-icon": "../../dist/icon/index",
+    "van-tag": "../../dist/tag/index",
+    "van-cell-group": "../../dist/cell-group/index",
+    "van-panel": "../../dist/panel/index",
+    "van-button": "../../dist/button/index",
+    "van-field": "../../dist/field/index"
+  }
+}

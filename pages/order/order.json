@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "订单",
+  "usingComponents": {
+    "demo-block": "../../components/demo-block/index",
+    "van-cell": "../../dist/cell/index",
+    "van-icon": "../../dist/icon/index",
+    "van-tag": "../../dist/tag/index",
+    "van-cell-group": "../../dist/cell-group/index",
+    "van-search": "../../dist/search/index",
+    "van-row": "../../dist/row/index",
+    "van-col": "../../dist/col/index"
+  }
+}

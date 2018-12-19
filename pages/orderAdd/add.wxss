@@ -1,0 +1,4 @@
+/* pages/orderAdd/add.wxss */
+.finish-btn {
+  margin-top: 40rpx;
+}

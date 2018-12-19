@@ -1,0 +1,28 @@
+<!--index.wxml-->
+<view class="container">
+
+  <form bindsubmit='loginForm'>
+  <van-cell-group>
+      <van-field
+        value="{{ username }}"
+        name = "username"
+        label="用户名"
+        placeholder="请输入用户名"
+      />
+
+      <van-field
+        value="{{ password }}"
+        type="password"
+        name="password"
+        label="密码"
+        placeholder="请输入密码"
+        border="{{ false }}"
+      />
+
+      <button class='loginBtn' type='primary' form-type='submit'>登录</button>
+  </van-cell-group>
+  </form>
+
+  <button bindtap='homePage'>home</button>
+
+</view>

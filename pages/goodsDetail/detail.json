@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "货物修改",
+  "usingComponents": {
+    "demo-block": "../../components/demo-block/index",
+    "van-cell": "../../dist/cell/index",
+    "van-cell-group": "../../dist/cell-group/index",
+    "van-field": "../../dist/field/index"
+  }
+}

@@ -1,0 +1,80 @@
+<!--pages/order/order.wxml-->
+<view class="body">
+  <!-- 搜索栏 -->
+  <van-search
+    value="{{ value }}"
+    name="search"
+    placeholder="请输入搜索关键词"
+    use-action-slot
+    bind:change="onChange"
+    bind:search="onSearch"
+  >
+    <view slot="action" bind:tap="onSearch">搜索</view>
+  </van-search>
+
+<!-- 顶部按钮 -->
+<van-row>
+  <!-- 订单按钮 -->
+  <van-col span="8" custom-class="dark" bindtap="stockClass">
+    <van-icon custom-class="icon" name="{{ icons[0] }}" size="14px" color="#fff" />
+    <!-- <view class="text">订单</view> -->
+  </van-col>
+
+  <!-- 添加订单按钮 -->
+  <van-col span="8" custom-class="light" bindtap="add">
+    <van-icon custom-class="icon" name="{{ icons[1] }}" size="14px" color="#fff" />
+    <!-- <view class="text">添加</view> -->
+  </van-col>
+
+  <!-- 规格按钮 -->
+  <van-col span="8" custom-class="dark">
+    <van-icon custom-class="icon" name="{{ icons[0] }}" size="14px" color="#fff" />
+    <!-- <view class="text">规格</view> -->
+  </van-col>
+</van-row>
+
+
+<demo-block title="急需订单">
+<van-cell-group wx:for="{{urgent}}" wx:item="item" wx:key="index">
+  <van-cell wx:if="{{item!=null}}" value="发货时间:{{item.deliveryDate}}" icon="" is-link id="{{index}}" data-part="urgent" bind:click="orderDetail">
+    <view slot="title">
+      <span class="van-cell-text">{{item.name}}  </span>
+      <van-tag type="danger">急需</van-tag>
+    </view>
+  </van-cell>
+  <!-- <van-cell value="发货时间:9月19号" icon="shop" is-link bind:click="orderDetail" border="{{ false }}">
+    <view slot="title">
+      <span class="van-cell-text">zzz917</span>
+      <van-tag type="danger">急需</van-tag>
+    </view>
+  </van-cell> -->
+</van-cell-group>
+</demo-block>
+
+
+<demo-block title="今日订单">
+<van-cell-group wx:for="{{todayOrders}}" wx:for-item="item" wx:key="index">
+  <!-- <van-cell title="xxx915" value="发货时间:待定" is-link bind:click="orderDetail"/> -->
+  <van-cell wx:if="{{item != null}}" title="{{item.name}}" value="{{item.status}}" is-link label="{{item.message}}" border="{{ false }}" id="{{index}}" data-part="todayOrders" bind:click="orderDetail"/>
+</van-cell-group>
+</demo-block>
+
+<demo-block title="待发订单">
+<!-- <van-cell-group>
+  <van-cell title="aaa" value="已发货" is-link/>
+  <van-cell title="存货50" value="已入库" label="备注" border="{{ false }}" is-link/> -->
+  <van-cell-group wx:for="{{ orders }}" wx:for-tiem="item" wx:key="index">
+    <van-cell wx:if="{{item != null}}" title="{{item.name}}" value="{{item.status}}" label="{{item.message}}" clickable="true" is-link id="{{ index }}" data-part="orders" bind:click="orderDetail"/>
+  
+  </van-cell-group>
+</demo-block>
+
+<!-- 
+<demo-block title="待发订单">
+<van-cell-group>
+  <van-cell title="存货60" value="内容" is-link/>
+  <van-cell title="存货70" value="内容" label="备注" is-link border="{{ false }}" />
+</van-cell-group>
+</demo-block> -->
+
+</view>

@@ -1,0 +1,15 @@
+<!-- test.wxml -->
+<view class='container'>
+  <text style='color:{{color}}' data-customData='自定义数组' data-customName='green arrow' data-sex='male' bindtap='clickMe'>{{mytxt}}</text>
+
+  
+  <view class="type-container">
+        <scroll-view class="type-navbar" scroll-x="true">
+            <view class="type-box" wx:for-items="{{categories}}" wx:key="id">
+                <view id="{{item.id}}" class="type-navbar-item {{activeCategoryId == item.id ? 'type-item-on' : ''}}" bindtap="tabClick">
+                    {{item.name}}
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>

@@ -1,0 +1,37 @@
+<!--pages/stock/stock.wxml-->
+<!-- 搜索栏 -->
+<van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot bind:change="onChange" bind:search="onSearch">
+  <view slot="action" bind:tap="onSearch">搜索</view>
+</van-search>
+
+
+<van-row>
+  <van-col span="8" custom-class="dark" bindtap="stockClass">
+    <van-icon custom-class="icon" name="{{ icons[0] }}" size="14px" color="#fff" />
+  </van-col>
+  <van-col span="8" custom-class="light">
+    <van-icon custom-class="icon" name="{{ icons[1] }}" size="14px" color="#fff" />
+  </van-col>
+  <van-col span="8" custom-class="dark">
+    <van-icon custom-class="icon" name="{{ icons[0] }}" size="14px" color="#fff" />
+  </van-col>
+</van-row>
+
+
+<van-row gutter="15">
+  <van-col span="8" custom-class="custom">总件数: {{sumPiece}}件</van-col>
+  <van-col span="8" custom-class="custom">总个数: {{sum}}个</van-col>
+  <van-col span="8" custom-class="custom">当前月: 0个</van-col>
+</van-row>
+
+
+<van-cell-group>
+  <van-cell title="60x90" value="" />
+  <van-cell title="70x90" value="" />
+</van-cell-group>
+
+
+<!-- 添加库存 -->
+<!-- <view class="bottom-box">
+    <view class="add-btn" bindtap="addAddess">新增存货</view>
+</view> -->
