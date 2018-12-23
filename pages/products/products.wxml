@@ -1,0 +1,7 @@
+<!--pages/products/products.wxml-->
+<demo-block title="产品">
+<van-cell-group wx:for="{{products}}" wx:for-item="item" wx:key="index">
+  <!-- <van-cell title="xxx915" value="发货时间:待定" is-link bind:click="orderDetail"/> -->
+  <van-cell wx:if="{{item != null}}" title="{{item.type}}" value="{{item.whorl}}" is-link label="{{item.seam}} {{item.minus}}" border="{{ false }}" id="{{item.id}}" bind:click="productDetail"/>
+</van-cell-group>
+</demo-block>

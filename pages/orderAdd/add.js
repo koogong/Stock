@@ -39,7 +39,7 @@ Page({
       // 将数据传入全局变量数组中
       getApp().globalData.addList[this.data.index] = e.detail.value;
       wx.navigateBack({
-        
+
       })
     }
   },

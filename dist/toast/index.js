@@ -1,6 +1,5 @@
-import { create } from '../common/create';
-
-create({
+import { VantComponent } from '../common/component';
+VantComponent({
   props: {
     show: Boolean,
     mask: Boolean,
@@ -23,12 +22,13 @@ create({
       value: 'middle'
     }
   },
-
   methods: {
-    clear() {
-      this.setData({
+    clear: function clear() {
+      this.set({
         show: false
       });
-    }
+    },
+    // for prevent touchmove
+    noop: function noop() {}
   }
 });

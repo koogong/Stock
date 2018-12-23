@@ -1,0 +1,61 @@
+<!--pages/productAdd/add.wxml-->
+<view class="body">
+  <form bindsubmit='addProduct'>
+    <demo-block title="基本信息">
+      <van-cell-group>
+        <!-- 名称 -->
+        <van-field value="{{ name }}" name="name" label="名称" placeholder="请输入名称" autosize />
+
+        <!-- 备注 -->
+        <van-field value="{{ description }}" name="description" label="备注" type="textarea" placeholder="请输入备注" autosize border="{{ false }}" />
+      </van-cell-group>
+
+    </demo-block>
+
+    <demo-block title="产品规格">
+      <van-cell-group>
+        <!-- 规格 -->
+        <van-field bind:blur="checkType" value="{{ type }}" name="type" label="规格" placeholder="请输入规格" autosize/>
+
+        <!-- 螺纹 -->
+        <van-field bind:blur="checkWhorl" value="{{ whorl }}" name="whorl" label="螺纹" placeholder="请输入螺纹" autosize/>
+
+        <!-- 止口 -->
+        <van-field bind:blur="checkSeam" value="{{ seam }}" name="seam" label="止口" placeholder="请输入止口" autosize/>
+
+        <!-- 负 -->
+        <van-field value="{{ minus }}" name="minus" label="负" placeholder="请输入负" autosize/>
+      </van-cell-group>
+    </demo-block>
+
+
+    <demo-block title="其他信息">
+      <van-cell-group>
+        <!-- 价格 -->
+        <van-field type="digit" value="{{ price }}" name="price" label="价格" placeholder="请输入价格" autosize/>
+
+        <!-- 单件 -->
+        <van-field type="digit" value="{{ piece }}" name="piece" label="单件" placeholder="请输入单件" autosize/>
+
+        <!-- 单位 -->
+        <van-field value="{{ unit }}" name="unit" label="单位" placeholder="请输入单位" bind:focus="toggleBottomPopup" autosize/>
+        <van-popup
+          show="{{showBottom}}"
+          position="bottom"
+          bind:close="toggleBottomPopup">
+          <van-picker
+            show-toolbar
+            title="单位"
+            columns="{{column}}"
+            bind:change="onChange"
+            bind:cancel="onCancel"
+            bind:confirm="onConfirm"
+            />
+        </van-popup>
+
+
+        <button class='finish-btn' type='warn' form-type='submit'>添加产品</button>
+      </van-cell-group>
+    </demo-block>
+  </form>
+</view>

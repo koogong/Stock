@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "添加产品",
+  "usingComponents": {
+    "van-popup": "../../dist/popup/index",
+    "van-picker": "../../dist/picker/index",
+    "demo-block": "../../components/demo-block/index",
+    "van-cell": "../../dist/cell/index",
+    "van-cell-group": "../../dist/cell-group/index",
+    "van-field": "../../dist/field/index",
+    "van-button": "../../dist/button/index"
+  }
+}

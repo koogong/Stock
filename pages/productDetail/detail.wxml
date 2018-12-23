@@ -1,0 +1,64 @@
+<!--pages/productDetail/detail.wxml-->
+<view class="body">
+  <form bindsubmit='updateProduct'>
+    <demo-block title="基本信息">
+      <van-cell-group>
+        <!-- 名称 -->
+        <van-field value="{{ product.name }}" name="name" label="名称" placeholder="{{product.name}}"/>
+
+        <!-- 备注 -->
+        <van-field value="{{ product.description }}" name="description" label="备注" type="textarea" placeholder="{{product.description}}" autosize border="{{ false }}" />
+      </van-cell-group>
+    </demo-block>
+    <demo-block title="产品规格">
+        <van-cell-group>
+          <!-- 规格 -->
+          <van-field value="{{ product.type }}" name="type" label="规格" placeholder="{{product.type}}" autosize/>
+
+          <!-- 螺纹 -->
+          <van-field value="{{ product.whorl }}" name="whorl" label="螺纹" placeholder="{{product.whorl}}" autosize/>
+
+          <!-- 止口 -->
+          <van-field value="{{ product.seam }}" name="seam" label="止口" placeholder="{{product.seam}}" autosize/>
+
+          <!-- 负 -->
+          <van-field value="{{ product.minus }}" name="minus" label="负" placeholder="{{product.minus}}" autosize/>
+        </van-cell-group>
+      </demo-block>
+
+    <demo-block title="其他信息">
+      <!-- 价格 -->
+      <van-field type="digit" value="{{ product.price }}" name="price" label="价格" placeholder="{{product.price}}"/>
+
+      <!-- 单件数量 -->
+      <van-field type="digit" value="{{ product.piece }}" name="piece" label="单件数量" placeholder="{{product.piece}}"/>
+
+      <!-- 单位 -->
+      <van-field value="{{ unit }}" name="unit" label="单位" placeholder="{{product.unit}}" bind:focus="toggleBottomPopup" autosize/>
+      <van-popup
+        show="{{showBottom}}"
+        position="bottom"
+        bind:close="toggleBottomPopup">
+        <van-picker
+          show-toolbar
+          title="单位"
+          columns="{{column}}"
+          bind:change="onChange"
+          bind:cancel="onCancel"
+          bind:confirm="onConfirm"
+          />
+      </van-popup>
+    </demo-block>
+
+    <demo-block title="系统属性">
+
+      <van-panel title="创建者" status="{{product.createBy}}"></van-panel>
+      <van-panel title="创建时间" status="{{product.createTime}}"></van-panel>
+      <van-panel title="更新时间" status="{{product.updateTime}}"></van-panel>
+
+
+    </demo-block>
+    <button class='finish-btn' type='primary' form-type='submit'>更新货物</button>
+  </form>
+  <button class='remove-btn' type='warn' bindtap='deleteProduct'>删除货物</button>
+</view>

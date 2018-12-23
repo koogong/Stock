@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "产品修改",
+  "usingComponents": {
+    "van-popup": "../../dist/popup/index",
+    "van-picker": "../../dist/picker/index",
+    "demo-block": "../../components/demo-block/index",
+    "van-cell": "../../dist/cell/index",
+    "van-cell-group": "../../dist/cell-group/index",
+    "van-field": "../../dist/field/index",
+    "van-panel": "../../dist/panel/index"
+  }
+}

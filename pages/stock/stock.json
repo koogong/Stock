@@ -2,6 +2,7 @@
   "navigationBarTitleText": "库存",
 
   "usingComponents": {
+    "demo-block": "../../components/demo-block/index",
     "van-search": "../../dist/search/index",
     "van-tree-select": "../../dist/tree-select/index",
     "van-row": "../../dist/row/index",

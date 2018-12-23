@@ -1,26 +1,26 @@
-import { create } from '../common/create';
-
-create({
+import { VantComponent } from '../common/component';
+VantComponent({
   classes: ['title-class'],
-
   props: {
     title: String,
+    fixed: Boolean,
     leftText: String,
     rightText: String,
     leftArrow: Boolean,
-    fixed: Boolean,
+    border: {
+      type: Boolean,
+      value: true
+    },
     zIndex: {
       type: Number,
       value: 1
     }
   },
-
   methods: {
-    onClickLeft() {
+    onClickLeft: function onClickLeft() {
       this.$emit('click-left');
     },
-
-    onClickRight() {
+    onClickRight: function onClickRight() {
       this.$emit('click-right');
     }
   }
