@@ -1,0 +1,21 @@
+{
+  "navigationBarTitleText": "库存",
+
+  "usingComponents": {
+    "demo-block": "../../components/demo-block/index",
+    "van-search": "../../dist/search/index",
+    "van-row": "../../dist/row/index",
+    "van-col": "../../dist/col/index",
+    "van-popup": "../../dist/popup/index",
+    "van-panel": "../../dist/panel/index",
+    "van-button": "../../dist/button/index",
+    "van-swipe-cell": "../../dist/swipe-cell/index",
+    "van-cell-group": "../../dist/cell",
+    "van-cell": "../../dist/cell/index",
+    "van-dialog": "../../dist/dialog/index",
+     "van-stepper": "../../dist/stepper/index",
+     "van-checkbox": "../../dist/checkbox/index",
+     "van-checkbox-group": "../../dist/checkbox-group/index"
+
+  }
+}

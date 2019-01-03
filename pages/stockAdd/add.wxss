@@ -1,0 +1,161 @@
+/* pages/stockAdd/add.wxss */
+
+.center-info {
+  /* text-align: center; */
+  margin-top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:#000000;
+}
+.bottom-box{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    font-size:28rpx;
+    color:#000000;
+    border-top: 1rpx solid #eee;
+    height:100rpx;
+    line-height: 100rpx;
+    background-size: 15rpx auto;
+    background-color: #fff;
+}
+
+.bottom-text {
+  position: fixed;
+  bottom: 0;
+  font-size: 28rpx;
+  color:#000000;
+  height: 100rpx;
+  border-top: 1rpx solid #eee;
+  padding-left: 100rpx;
+}
+
+.add-btn {
+  width: 150rpx;
+  text-align: center;
+  line-height: 100rpx;
+}
+
+.bottom-finish-text {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  font-size: 28rpx;
+  color:#fff;
+  height: 100rpx;
+  border-top: 1rpx solid #eee;
+
+  width: 250rpx;
+  background-color: #3D3C41;
+}
+.finish-btn {
+  width: 250rpx;
+  text-align: center;
+  line-height: 100rpx;
+}
+.swipe-cell {
+  user-select: none;
+}
+
+.van-swipe-cell__left,
+.van-swipe-cell__right {
+  display: inline-block;
+  width: 65px;
+  height: 44px;
+  font-size: 15px;
+  line-height: 44px;
+  color: #fff;
+  text-align: center;
+  background-color: #f44;
+}
+.bottomPopup {
+  margin-top: 25rpx;
+  margin-bottom: 25rpx;
+}
+.footer {
+  text-align: right;
+}
+.content {
+  padding: 20px;
+  font-size: 16px;
+}
+.van-col {
+  border-bottom: 1rpx solid #F4F4F4;
+}
+.col {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+  float: left;
+}
+
+.type {
+  width: 150rpx;
+  float: left;
+  color: #000;
+}
+.whorl {
+  width: 100rpx;
+  float: left;
+}
+.stepper {
+  margin-top: 50rpx;
+  float: right;
+}
+
+.seam,
+.minus {
+  font-size: 12px;
+}
+
+.amount {
+  font-size: 14px;
+  position: absolute;
+  width: 120rpx;
+  left: 300rpx;
+  top: 35%;
+  color: #99B0FA;
+}
+
+.box-view .whorl,
+.box-view .seam,
+.box-view .minus {
+  font-size: 13px;
+  color: #3D3C41;
+  width: 28%;
+  float: left;
+}
+.box-view .select {
+  width: 12%;
+  float: right;
+  margin-top: -1rpx;
+}
+
+.bottomBtn {
+  margin-left: 25rpx;
+}
+
+.box {
+  border-radius: 8px;
+  border: 0mm solid rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  margin: 20rpx 15rpx;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.box-view {
+  padding: 8px 15px;
+  color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 40rpx;
+}
+
+/* .box-button {
+  position: absolute;
+} */
+
+.header-class {
+  color: #fff;
+}

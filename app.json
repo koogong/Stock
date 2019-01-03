@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/stock/stock",
+    "pages/stockAdd/add",
     "pages/productAdd/add",
     "pages/order/order",
     "pages/orderAddList/list",
@@ -20,9 +21,9 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#3D3C41",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "WeChat"
   },
   "tabBar": {
     "color": "#6e6d6b",

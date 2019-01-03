@@ -1,0 +1,80 @@
+<!--pages/stockAdd/add.wxml-->
+<view class="body">
+
+  <van-search value="{{ value }}"
+    placeholder="请输入搜索关键词" use-action-slot
+    bind:change="onChange"
+    bind:search="onSearch"
+    bind:focus="onFocus"
+    bind:blur="onBlur">
+    <view slot="action" bind:tap="onSearch">搜索</view>
+  </van-search>
+
+  <view>
+    <van-checkbox-group value="{{ result }}" data-key="result" bind:change="onChange">
+      <view class="box"
+            wx:for="{{list}}"
+            wx:key="{{index}}">
+        <van-panel title="{{item}}" status="库存: 0">
+          <view class="box-view">
+            <view class="whorl">螺纹: 默认</view>
+            <view class="seam">止口: 默认</view>
+            <view class="minus">负丝: 默认</view>
+            <view class="select">
+              <van-checkbox name="{{ item }}"></van-checkbox>
+            </view>
+          </view>
+        </van-panel>
+      </view>
+    </van-checkbox-group>
+  </view>
+
+
+  <view class="bottom-box" bindtap="toggleBottomPopup">
+    <view class='bottom-text' bindtap="">
+      <view class="add-btn">已选中</view>
+    </view>
+  </view>
+  <van-popup
+    show="{{bottom}}"
+    position="bottom"
+    custom-class="bottom"
+    bind:close="toggleBottomPopup"
+    >
+    <view class="bottomPopup">
+
+      <van-row wx:for="{{result}}" wx:key="{{index}}">
+        <van-col span="22" offset="1" class="van-col">
+          <view class="col">
+            <view class="type">{{item}}</view>
+            <view class="whorl">30x2</view>
+            <view class="seam">止口: 37x14</view>
+            <view class="minus">负丝: -4</view>
+            <view class="amount">库存: 2</view>
+          </view>
+          <van-stepper class="stepper" value="{{ 1 }}" bind:change="onChange" />
+        </van-col>
+      </van-row>
+      <van-panel title="合计: 30件" desc="总数: 300个" status="状态" use-footer-slot>
+        <view slot="footer" class="footer">
+          <!-- <van-button size="small">按钮</van-button> -->
+          <van-button class="bottomBtn" size="normal" bind:click="toggleBottomPopup">关闭</van-button>
+          <van-button class="bottomBtn" size="normal" type="danger">入库</van-button>
+        </view>
+      </van-panel>
+    </view>
+
+    <!-- <van-swipe-cell id="swipe-cell" right-width="{{ 65 }}" left-width="{{ 65 }}" async-close bind:close="onClose">
+      <view slot="left" class="van-swipe-cell__left">选择</view>
+      <van-cell title="单元格" value="内容" />
+      <view slot="right" class="van-swipe-cell__right">删除</view>
+    </van-swipe-cell> -->
+
+  </van-popup>
+
+  <!-- 入库按钮 -->
+  <view class='bottom-finish-text' bindtap="toggleBottomPopup">
+    <view class="finish-btn">已选中</view>
+  </view>
+
+</view>

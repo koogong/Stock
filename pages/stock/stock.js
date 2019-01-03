@@ -107,12 +107,21 @@ Page({
     })
   },
 
+  // 跳转至产品添加页面
   toProductAdd: function() {
     wx.navigateTo({
       url: '../productAdd/add'
     })
   },
 
+  toPutStock: function() {
+    wx.navigateTo({
+      url: '../stockAdd/add'
+    })
+  },
+
+
+  // 产品搜索
   onProductSearch: function() {
 
   }
