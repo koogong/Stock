@@ -17,6 +17,33 @@ Page({
   },
 
   /**
+   * 搜索输入框内的值
+   */
+  onChange(e) {
+    this.setData({
+      value: e.detail
+    });
+  },
+
+  /**
+   * 搜索按钮
+   */
+  onSearch(event) {
+    if (event.detail) {
+      wx.showToast({
+        title: '搜索：' + this.data.value,
+        icon: 'none'
+      });
+    }
+  },
+
+  onCancel() {
+    wx.showToast({
+      title: '取消',
+      icon: 'none'
+    });
+  },
+  /**
   * 获取 产品列表
   */
   requestProducts: function() {
@@ -59,6 +86,12 @@ Page({
     getApp().globalData.productId = id;
     wx.navigateTo({
       url: '../productDetail/detail'
+    })
+  },
+
+  addProduct: function() {
+    wx.navigateTo({
+      url: '../productAdd/add'
     })
   },
 

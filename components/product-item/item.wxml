@@ -1,0 +1,16 @@
+<!--components/product-item/item.wxml-->
+<view class="product-item">
+
+  <view class="title">
+    <view class="product-item__type" wx:if="{{type}}">{{type}}</view>
+    <view class="product-item__desc" wx:if="{{desc}}">备注: {{desc}}</view>
+  </view>
+
+  <view class="detail">
+    <view class="product-item__whorl" wx:if="{{whorl}}">螺纹: {{whorl}}</view>
+    <view class="product-item__seam" wx:if="{{seam}}">止口: {{seam}}</view>
+    <view class="product-item__minus" wx:if="{{minus}}">负丝: {{minus}}</view>
+  </view>
+
+  <slot/>
+</view>

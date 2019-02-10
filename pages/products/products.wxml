@@ -1,7 +1,45 @@
-<!--pages/products/products.wxml-->
-<demo-block title="产品">
-<van-cell-group wx:for="{{products}}" wx:for-item="item" wx:key="index">
   <!-- <van-cell title="xxx915" value="发货时间:待定" is-link bind:click="orderDetail"/> -->
+<!-- <demo-block title="产品">
+<van-cell-group wx:for="{{products}}" wx:for-item="item" wx:key="index">
+
   <van-cell wx:if="{{item != null}}" title="{{item.type}}" value="{{item.whorl}}" is-link label="{{item.seam}} {{item.minus}}" border="{{ false }}" id="{{item.id}}" bind:click="productDetail"/>
 </van-cell-group>
-</demo-block>
+</demo-block> -->
+
+<view class="body">
+  <van-search
+    value="{{ value }}"
+    name="search"
+    placeholder="请输入搜索关键词"
+    use-action-slot
+    bind:change="onChange"
+    bind:search="onSearch"
+  >
+    <view slot="action" bind:tap="onSearch">搜索</view>
+  </van-search>
+
+  <view class="select">
+      <view class="select-text">筛选</view>
+      <view class="select-text">分类</view>
+  </view>
+
+  <view class="products">
+    <product-item bindtap="productDetail" id="12341234" type="60x90" desc="" whorl="30x2" seam="默认" minus="默认" />
+    <product-item bindtap="productDetail" id="12341234" type="60x90" desc="" whorl="35x2" seam="37x14" minus="默认" />
+  </view>
+
+
+
+
+  <view class="bottom-box" bindtap="addProduct">
+    <view class='add-icon'>
+      <van-icon custom-class="icon" name="add-o" size='20px' color='#fff'/>
+    </view>
+  </view>
+  <view class='bottom-text' bindtap="addProduct">
+    <view class="add-btn">添加产品</view>
+  </view>
+
+
+
+</view>

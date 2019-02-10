@@ -1,0 +1,23 @@
+<view class="status-item">
+
+  <view wx:if="{{type}}" class="status-item__type">
+    {{type}}
+  </view>
+  <view wx:if="{{whorl}}" class="status-item__whorl">
+    {{whorl}}
+  </view>
+  <view wx:if="{{seam}}" class="status-item__seam">
+    {{seam}}
+  </view>
+  <view wx:if="{{minus}}" class="status-item__minus">
+    {{minus}}
+  </view>
+  <view wx:if="{{time}}" class="status-item__time">
+    {{time}}
+  </view>
+  <view wx:if="{{piece}}" class="status-item__piece">
+    {{piece}}
+  </view>
+  <view class="line"> </view>
+  <slot />
+</view>

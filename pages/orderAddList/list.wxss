@@ -59,7 +59,7 @@
   height: 100rpx;
 }
 
-.add-icon .icon {
+/* .add-icon .icon {
   line-height: 100rpx;
   margin-left: 40rpx;
-}
+} */

@@ -1,1 +1,60 @@
 /* pages/products/products.wxss */
+
+.bottom-box{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    font-size:28rpx;
+    color:#000000;
+    border-top: 1rpx solid #eee;
+    height:120rpx;
+    line-height: 100rpx;
+    background-size: 15rpx auto;
+    background-color: #FF8989;
+}
+
+.bottom-text {
+  position: fixed;
+  bottom: 0;
+  font-size: 34rpx;
+  color:#fff;
+  width: 100%;
+}
+
+.add-btn {
+  width: 110%;
+  text-align: center;
+  line-height: 120rpx;
+  height: 120rpx;
+  font-weight: 800;
+}
+
+.add-icon {
+  width: 100rpx;
+  height: 120rpx;
+  /* margin-left: 32%; */
+  position: absolute;
+  left: 32%;
+  top: 10rpx;
+}
+
+.add-icon .icon {
+  line-height: 100rpx;
+  margin-left: 40rpx;
+}
+
+.select {
+  text-align: center;
+  font-size: 30rpx;
+  width: 100%;
+  background-color: #fff;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: rgba(0, 0, 0, 0.5);
+  border: .2rpx solid rgba(0, 0, 0, .1);
+}
+
+.select-text {
+  width: 50%;
+  float: left;
+}
