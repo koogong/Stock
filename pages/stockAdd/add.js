@@ -7,8 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    value: '',
     show: '',
     bottom: false,
+    bottom2: false,
     list: ['60x90', '70x90', '80x90'],
     result: []
   },
@@ -19,17 +21,47 @@ Page({
   onLoad: function (options) {
 
   },
+  onChange1(e) {
+    this.setData({
+      value: e.detail
+    });
+  },
 
-  onFocus: function() {
+  /**
+    搜索关键词获取产品信息并且选中
+  **/
+  onSearch(event) {
+    if (this.data.value) {
+      wx.showToast({
+        title: '搜索：' + this.data.value,
+        icon: 'none'
+      });
+    }
+  },
+  /**
+    清理输入框并且重新加载所有产品数据
+  **/
+  onClear: function() {
+    wx.showToast({
+      title: '清空',
+      icon: 'none'
+    });
+  },
+  onFocus: function(event) {
 
   },
 
-  onBlur: function() {
+  onBlur: function(event) {
 
   },
   toggleBottomPopup: function() {
     this.setData({
       bottom: !this.data.bottom
+    })
+  },
+  toggleBottomPopup2: function() {
+    this.setData({
+      bottom2: !this.data.bottom2
     })
   },
   onClose(event) {
@@ -50,6 +82,7 @@ Page({
   },
   onChange(event) {
     const { key } = event.currentTarget.dataset;
+    console.log(event);
     this.setData({ [key]: event.detail });
     console.log(this.data.result);
   },

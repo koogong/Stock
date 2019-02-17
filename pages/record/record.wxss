@@ -1,0 +1,6 @@
+/* pages/record/record.wxss */
+.con {
+  margin-top: 15rpx;
+  padding: 0 20rpx;
+  position: relative;
+}

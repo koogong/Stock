@@ -1,0 +1,22 @@
+<!--components/product-item/item.wxml-->
+<view class="record-item">
+
+  <view class="title">
+    <view class="record-item__type" wx:if="{{type}}" >{{type}}</view>
+    <view class="record-item__time" wx:if="{{time}}">{{time}}</view>
+    <view class="record-item__status" wx:if="{{status}}">{{status}}</view>
+  </view>
+
+  <view class="detail">
+    <view class="record-item__whorl" wx:if="{{whorl}}">螺纹: {{whorl}}</view>
+    <view class="record-item__seam" wx:if="{{seam}}">止口: {{seam}}</view>
+    <view class="record-item__minus" wx:if="{{minus}}">负丝: {{minus}}</view>
+    <view class="record-item__number" wx:if="{{number}}">{{number}} 件</view>
+  </view>
+
+
+
+
+
+  <slot/>
+</view>

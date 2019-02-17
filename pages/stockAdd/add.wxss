@@ -21,38 +21,31 @@
     background-color: #fff;
 }
 
-.bottom-text {
+.bottom-btn {
   position: fixed;
   bottom: 0;
   font-size: 28rpx;
-  color:#000000;
-  height: 100rpx;
-  border-top: 1rpx solid #eee;
-  padding-left: 100rpx;
-}
-
-.add-btn {
-  width: 150rpx;
-  text-align: center;
+  color: #00000;
   line-height: 100rpx;
+  text-align: center;
+  width: 50%;
+  border-top: 1rpx solid #eee;
 }
 
-.bottom-finish-text {
-  position: fixed;
-  bottom: 0;
+.outStock {
   right: 0;
-  font-size: 28rpx;
-  color:#fff;
-  height: 100rpx;
-  border-top: 1rpx solid #eee;
-
-  width: 250rpx;
   background-color: #3D3C41;
+  color:#fff;
 }
-.finish-btn {
-  width: 250rpx;
-  text-align: center;
-  line-height: 100rpx;
+
+.toPutStock {
+
+
+}
+
+.toOutStock {
+
+
 }
 .swipe-cell {
   user-select: none;

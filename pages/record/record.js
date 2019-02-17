@@ -1,40 +1,42 @@
-// pages/stock-bar/stock.js
+// pages/record/record.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    active: 0
+    value: ''
   },
-  onChange: function(event) {
+  /**
+    搜索关键词获取产品信息并且选中
+  **/
+  onSearch(event) {
+    if (this.data.value) {
+      wx.showToast({
+        title: '搜索：' + this.data.value,
+        icon: 'none'
+      });
+    }
+  },
+  /**
+    清理输入框并且重新加载所有产品数据
+  **/
+  onClear: function() {
     wx.showToast({
-      title: `切换到标签${event.detail.index+ 1}`,
+      title: '清空',
       icon: 'none'
-    })
+    });
   },
-
-  toRecord: function() {
+  onChange(e) {
+    this.setData({
+      value: e.detail
+    });
+  },
+  onClick(event) {
     wx.showToast({
-      title: "Record",
+      title: `点击标签 ${event.detail.index + 1}`,
       icon: 'none'
-    })
-  },
-  toStock: function() {
-    wx.navigateTo({
-      url: '../stockAdd/add'
-    })
-  },
-  toProduct: function() {
-    wx.navigateTo({
-      url: '../products/products'
-    })
-  },
-  toStockList: function() {
-    wx.showToast({
-      title: "StockList",
-      icon: 'none'
-    })
+    });
   },
 
   /**

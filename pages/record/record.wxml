@@ -1,0 +1,28 @@
+<view class="body">
+
+  <van-search
+    value="{{ value }}"
+    placeholder="请输入搜索关键词"
+    use-action-slot
+    bind:change="onChange"
+    bind:search="onSearch"
+    bind:clear="onClear"
+  >
+    <view slot="action" bind:tap="onSearch">搜索</view>
+  </van-search>
+
+  <van-tabs bind:click="onClick"  color="#3D3C41" bind:click="onClick" >
+    <van-tab title="出库" custom-class="con">
+      <record-item type="60x90" whorl="30x2" seam="默认" minus="-4" number="12" time="2019年2月16日" status="出库" />
+      <record-item type="70x90" whorl="30x2" seam="默认" minus="-4" number="12" time="2019年2月16日" status="出库" />
+      <record-item type="80x90" whorl="30x2" seam="默认" minus="-4" number="12" time="2019年2月16日" status="出库" />
+
+    </van-tab>
+
+    <van-tab title="入库" custom-class="con">
+
+    </van-tab>
+  </van-tabs>
+
+
+</view>

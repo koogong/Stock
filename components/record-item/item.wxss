@@ -1,0 +1,57 @@
+/* components/record-item/item.wxss */
+.record-item {
+  font-size: 14px;
+  position: resources;
+  background-color: #fff;
+  border-radius: 10rpx;
+  height: 130rpx;
+  padding-left: 20rpx;
+  margin-bottom: 10rpx;
+}
+
+.title {
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.record-item__type {
+  float: left;
+  font-size: 16px;
+}
+.record-item__time {
+  font-size: 12px;
+  float: right;
+  margin-right: 150rpx;
+}
+.record-item__status {
+  background-color: #3D3C41;
+  color: #fff;
+  position: absolute;
+  right: 3%;
+  border-radius: 0 10rpx;
+  font-size: 13px;
+  text-align: center;
+  width: 120rpx;
+}
+
+.detail {
+  line-height: 80rpx;
+  font-size: 12px;
+}
+
+.record-item__whorl,
+.record-item__seam,
+.record-item__minus {
+  width: 18%;
+  float: left;
+}
+
+.record-item__number {
+  width: 120rpx;
+  text-align: center;
+  float: right;
+  color: #8EC2FF;
+  font-size: 12px;
+  line-height: 70rpx;
+}
