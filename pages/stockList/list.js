@@ -1,38 +1,11 @@
-// pages/stock-bar/stock.js
+// pages/stockList/list.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    active: 0
-  },
-  onChange: function(event) {
-    wx.showToast({
-      title: `切换到标签${event.detail.index+ 1}`,
-      icon: 'none'
-    })
-  },
-
-  toRecord: function() {
-    wx.navigateTo({
-      url: '../record/record'
-    })
-  },
-  toStock: function() {
-    wx.navigateTo({
-      url: '../stockAdd/add'
-    })
-  },
-  toProduct: function() {
-    wx.navigateTo({
-      url: '../products/products'
-    })
-  },
-  toStockList: function() {
-    wx.navigateTo({
-      url: '../stockList/list'
-    })
+    value: ''
   },
 
   /**

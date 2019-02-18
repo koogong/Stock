@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/record/record",
+    "pages/stockList/list",
     "pages/stock-bar/stock",
+    "pages/record/record",
     "pages/stockAdd/add",
     "pages/products/products",
     "pages/stock/stock",
@@ -28,6 +29,7 @@
     "navigationBarTitleText": "WeChat"
   },
   "usingComponents": {
+    "record-cell": "components/record-cell/cell",
     "record-item": "components/record-item/item",
     "product-item": "/components/product-item/item",
     "status-item": "/components/status-item/item",

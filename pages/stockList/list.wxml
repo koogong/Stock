@@ -1,0 +1,42 @@
+<view class="body">
+  <van-search
+    value="{{ value }}"
+    name="search"
+    placeholder="请输入搜索关键词"
+    use-action-slot
+    bind:change="onChange"
+    bind:search="onSearch"
+  >
+    <view slot="action" bind:tap="onSearch">搜索</view>
+  </van-search>
+
+  <view class="select">
+      <view class="select-item">
+          <image class="select-img" src="../resources/images/stockList/sort.png"/>
+          <view class="select-text">排序</view>
+      </view>
+      <view class="select-item">
+        <image class="select-img" src="../resources/images/stockList/sift.png"/>
+        <view class="select-text">筛选</view>
+      </view>
+      <view class="select-item">
+        <image class="select-img" src="../resources/images/stockList/class.png"/>
+        <view class="select-text">分类</view>
+      </view>
+  </view>
+
+  <view class="header">
+    <view class="h-item type">规格</view>
+    <view class="h-item">螺纹</view>
+    <view class="h-item">止口</view>
+    <view class="h-item">负丝</view>
+    <view class="h-item number">件数</view>
+  </view>
+
+  <view class="content">
+    <record-cell type="60x90" whorl="35x2" seam="37x14" minus="-3~-5" number="12"/>
+    <record-cell type="180x180" whorl="30x2" seam="默认" minus="默认" number="12"/>
+  </view>
+
+
+</view>

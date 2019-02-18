@@ -1,0 +1,53 @@
+/* pages/stockList/list.wxss */
+
+.select {
+  font-size: 14px;
+  width: 100%;
+  background-color: #fff;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: rgba(0, 0, 0, 0.7);
+  border: .2rpx solid rgba(0, 0, 0, .1);
+}
+
+.select-item {
+  width: 33.3%;
+  float: left;
+}
+
+.select-img {
+  width: 30rpx;
+  height: 30rpx;
+  float: left;
+  padding: 15rpx;
+  margin-left: 25%;
+}
+
+.select-text {
+  width: 120rpx;
+  float: left;
+}
+
+.header {
+  width: 100%;
+  padding: 10rpx 0;
+  height: 30rpx;
+  line-height: 30rpx;
+}
+
+.h-item {
+  float: left;
+  padding: 0 15rpx;
+  font-size: 13px;
+  margin-right: 4rpx;
+}
+
+.type {
+  padding: 0 50rpx;
+  margin-right: 0;
+}
+
+.number {
+  float: right;
+  margin-right: 18rpx;
+}

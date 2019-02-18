@@ -1,0 +1,13 @@
+<view class="record">
+
+  <view class="type">{{type}}</view>
+
+  <view class="tags">
+    <view class="whorl tag">{{whorl}}</view>
+    <view class="seam tag">{{seam}}</view>
+    <view class="minus tag">{{minus}}</view>
+
+    <view class="number tag">{{number}} 件</view>
+  </view>
+
+</view>
