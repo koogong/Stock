@@ -9,7 +9,7 @@
   >
     <view slot="action" bind:tap="onSearch">搜索</view>
   </van-search>
-
+<!-- 
   <view class="select">
       <view class="select-item">
           <image class="select-img" src="../resources/images/stockList/sort.png"/>
@@ -23,7 +23,7 @@
         <image class="select-img" src="../resources/images/stockList/class.png"/>
         <view class="select-text">分类</view>
       </view>
-  </view>
+  </view> -->
 
   <view class="header">
     <view class="h-item type">规格</view>
