@@ -1,11 +1,31 @@
 // pages/products/products.js
+import config from './config';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-      products: []
+      products: [],
+      show: false,
+      mask: false,
+      mainActiveIndex: 0,
+      activeId: 0,
+      items: [
+        {
+          text: config.pro1Name,
+          children: config.pro1
+        }, {
+          text: config.pro2Name,
+          children: config.pro2
+        }, {
+          text: config.pro3Name,
+          children: config.pro3
+        }, {
+          text: config.pro4Name,
+          children: config.pro4
+        }
+      ]
   },
 
   /**
@@ -14,6 +34,19 @@ Page({
   onLoad: function (options) {
     var that = this;
     that.requestProducts();
+  },
+
+  onClickNav({ detail }) {
+    this.setData({
+      mainActiveIndex: detail.index || 0
+    });
+  },
+
+  onClickItem({ detail }) {
+    this.setData({
+      activeId: detail.id
+    });
+    console.log(detail);
   },
 
   /**
@@ -42,6 +75,21 @@ Page({
       title: '取消',
       icon: 'none'
     });
+  },
+
+  onSelect: function() {
+    this.setData({
+      show: !this.data.show,
+      mask: !this.data.mask
+    })
+  },
+
+  onMask: function() {
+    this.setData({
+      mask: !this.data.mask,
+      show: false,
+      show2: false
+    })
   },
   /**
   * 获取 产品列表

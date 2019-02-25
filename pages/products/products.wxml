@@ -7,25 +7,58 @@
 </demo-block> -->
 
 <view class="body">
-  <van-search
-    value="{{ value }}"
-    name="search"
-    placeholder="请输入搜索关键词"
-    use-action-slot
-    bind:change="onChange"
-    bind:search="onSearch"
-  >
-    <view slot="action" bind:tap="onSearch">搜索</view>
-  </van-search>
+  <view class="search-box">
+    <van-search
+      value="{{ value }}"
+      name="search"
+      placeholder="请输入搜索关键词"
+      use-action-slot
+      bind:change="onChange"
+      bind:search="onSearch"
+    >
+      <view slot="action" bind:tap="onSearch">搜索</view>
+    </van-search>
+  </view>
 
   <view class="select">
-      <view class="select-text">筛选</view>
-      <view class="select-text">分类</view>
+      <view class="select-text" bind:tap="onSelect">分类</view>
+
+      <van-transition show="{{ show }}" name="fade-down">
+        <view class="select-box">
+            <van-tree-select main-item-class="select-nav" content-item-class="select-content"
+              items="{{items}}"
+              main-active-index="{{mainActiveIndex}}"
+              active-id="{{activeId}}"
+              bind:click-nav="onClickNav"
+              bind:click-item="onClickItem"/>
+        </view>
+      </van-transition>
+
+      <van-transition show="{{ mask }}" name="fade">
+        <view class="mask" bind:tap="onMask"></view>
+      </van-transition>
+
   </view>
+
+
+
+
+
 
   <view class="products">
     <product-item bindtap="productDetail" id="12341234" type="60x90" desc="" whorl="30x2" seam="默认" minus="默认" />
     <product-item bindtap="productDetail" id="12341234" type="60x90" desc="" whorl="35x2" seam="37x14" minus="默认" />
+    <product-item bindtap="productDetail" id="12341234" type="60x90" desc="" whorl="35x2" seam="37x14" minus="默认" />
+    <product-item bindtap="productDetail" id="12341234" type="60x90" desc="" whorl="35x2" seam="37x14" minus="默认" />
+    <product-item bindtap="productDetail" id="12341234" type="60x90" desc="" whorl="35x2" seam="37x14" minus="默认" />
+    <product-item bindtap="productDetail" id="12341234" type="60x90" desc="" whorl="35x2" seam="37x14" minus="默认" />
+    <product-item bindtap="productDetail" id="12341234" type="60x90" desc="" whorl="35x2" seam="37x14" minus="默认" />
+    <product-item bindtap="productDetail" id="12341234" type="60x90" desc="" whorl="35x2" seam="37x14" minus="默认" />
+    <product-item bindtap="productDetail" id="12341234" type="60x90" desc="" whorl="35x2" seam="37x14" minus="默认" />
+    <product-item bindtap="productDetail" id="12341234" type="60x90" desc="" whorl="35x2" seam="37x14" minus="默认" />
+    <product-item bindtap="productDetail" id="12341234" type="60x90" desc="" whorl="35x2" seam="37x14" minus="默认" />
+    <product-item bindtap="productDetail" id="12341234" type="60x90" desc="" whorl="35x2" seam="37x14" minus="默认" />
+
   </view>
 
 

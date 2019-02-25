@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/stockList/list",
     "pages/stock-bar/stock",
+    "pages/products/products",
+    "pages/stockList/list",
     "pages/record/record",
     "pages/stockAdd/add",
-    "pages/products/products",
     "pages/stock/stock",
     "pages/productAdd/add",
     "pages/order/order",
