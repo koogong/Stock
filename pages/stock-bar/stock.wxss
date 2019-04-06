@@ -83,6 +83,7 @@ background-color: #97D596;
   position: relative;
   top: -100%;
   left: 40%;
+  font-size: 22rpx;
 }
 
 .status {
@@ -123,4 +124,9 @@ background-color: #97D596;
   border-radius: 0 15rpx 0 15rpx;
   bottom: 70rpx;
   left: 581rpx;
+}
+
+.none_record {
+  margin-left: 30rpx;
+  font-size: 25rpx;
 }

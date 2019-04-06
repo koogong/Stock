@@ -31,17 +31,17 @@
       <view class="stock-status">
         <view class="status-item type">
           <view class="s-title">规格</view>
-          <view class="s-count">20 种</view>
+          <view class="s-count">{{type}} 种</view>
         </view>
 
         <view class="status-item piece">
           <view class="s-title">件数</view>
-          <view class="s-count">20 件</view>
+          <view class="s-count">{{package}} 件</view>
         </view>
 
         <view class="status-item number">
           <view class="s-title">数量</view>
-          <view class="s-count">20 个</view>
+          <view class="s-count">{{quantity}} 个</view>
         </view>
       </view>
 
@@ -49,21 +49,30 @@
           <view class="status">
             <view class="status-box in">
               <view class="s-head">入库状态</view>
-              <view class="s-item-count">合计: 120件</view>
+              <view class="s-item-count">合计: {{inSum}}件</view>
               <view class="s-item">
+                <view class="none_record" wx:if="{{inRecord.length==0}}">暂无记录</view>
+                <view wx:else>
+                  <view wx:for="{{inRecord}}" wx:item="item" wx:key="index">
+                    <status-item type="{{item.product.type}}" whorl="{{item.product.whorl}}" seam="{{item.product.seam}}" minus="{{item.product.minus}}" time="{{item.time}}" piece="{{item.packages}} 件"/>
+                  </view>
+                </view>
+                <!-- <status-item type="60x90" whorl="30x2" seam="默认" minus="-4" time="下午3:15" piece="30件"/>
                 <status-item type="60x90" whorl="30x2" seam="默认" minus="-4" time="下午3:15" piece="30件"/>
-                <status-item type="60x90" whorl="30x2" seam="默认" minus="-4" time="下午3:15" piece="30件"/>
-                <status-item type="60x90" whorl="30x2" seam="默认" minus="-4" time="下午3:15" piece="30件"/>
+                <status-item type="60x90" whorl="30x2" seam="默认" minus="-4" time="下午3:15" piece="30件"/> -->
               </view>
             </view>
 
             <view class="status-box out">
               <view class="s-head">出库状态</view>
-              <view class="s-item-count">合计: 120件</view>
+              <view class="s-item-count">合计: {{outSum}}件</view>
               <view class="s-item">
-                <status-item type="60x90" whorl="30x2" seam="默认" minus="-4" time="下午3:15" piece="30件"/>
-                <status-item type="60x90" whorl="30x2" seam="默认" minus="-4" time="下午3:15" piece="30件"/>
-                <status-item type="60x90" whorl="30x2" seam="默认" minus="-4" time="下午3:15" piece="30件"/>
+                <view class="none_record" wx:if="{{outRecord.length==0}}">暂无记录</view>
+                <view wx:else>
+                  <view wx:for="{{outRecord}}" wx:item="item" wx:key="index">
+                    <status-item type="{{item.product.type}}" whorl="{{item.product.whorl}}" seam="{{item.product.seam}}" minus="{{item.product.minus}}" time="{{item.time}}" piece="{{item.packages}} 件"/>
+                  </view>
+                </view>
               </view>
             </view>
 
