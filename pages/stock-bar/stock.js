@@ -34,7 +34,7 @@ Page({
 
   loadTotal: function() {
     var that = this;
-    var url = 'http://localhost:8888/stock/total';
+    var url = app.serverUrl + '/stock/total';
     wx.request({
       url: url,
       method: 'GET',
