@@ -4,3 +4,8 @@
   padding: 0 20rpx;
   position: relative;
 }
+.none_record {
+  margin: 0 auto;
+  padding-top: 50rpx;
+  text-align: center;
+}

@@ -13,14 +13,18 @@
 
   <van-tabs bind:click="onClick"  color="#3D3C41" bind:click="onClick" >
     <van-tab title="出库" custom-class="con">
-      <record-item type="60x90" whorl="30x2" seam="默认" minus="-4" number="12" time="2019年2月16日" status="出库" />
-      <record-item type="70x90" whorl="30x2" seam="默认" minus="-4" number="12" time="2019年2月16日" status="出库" />
-      <record-item type="80x90" whorl="30x2" seam="默认" minus="-4" number="12" time="2019年2月16日" status="出库" />
+      <view wx:if="{{inRecord.length==0}}" class="none_record">暂无数据</view>
+      <view wx:for="{{inRecord}}" wx:item="item" wx:key="index">
+        <record-item type="{{item.product.type}}" whorl="{{item.product.whorl}}" seam="{{item.product.seam}}" minus="{{item.product.minus}}" number="{{item.packages}}" time="{{item.create_time}}" status="出库" />
+      </view>
 
     </van-tab>
 
     <van-tab title="入库" custom-class="con">
-
+      <view wx:if="{{outRecord.length==0}}" class="none_record">暂无数据</view>
+      <view wx:for="{{outRecord}}" wx:item="item" wx:key="index">
+        <record-item type="{{item.product.type}}" whorl="{{item.product.whorl}}" seam="{{item.product.seam}}" minus="{{item.product.minus}}" number="{{item.packages}}" time="{{item.create_time}}" status="入库" />
+      </view>
     </van-tab>
   </van-tabs>
 

@@ -1,11 +1,14 @@
 // pages/record/record.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    value: ''
+    value: '',
+    inRecord: [],
+    outRecord: []
   },
   /**
     搜索关键词获取产品信息并且选中
@@ -33,8 +36,12 @@ Page({
     });
   },
   onClick(event) {
+    var text = '入库';
+    if(event.detail.index == 0) {
+      text = '出库';
+    }
     wx.showToast({
-      title: `点击标签 ${event.detail.index + 1}`,
+      title: text,
       icon: 'none'
     });
   },
@@ -43,7 +50,39 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.loadRecords();
+  },
 
+  /**
+   * 加载入库记录数据
+   */
+  loadRecords: function() {
+    var that = this;
+    var url = app.serverUrl + "/stock/record/all"
+
+    wx.request({
+      url: url,
+      method: 'GET',
+      header: {
+        'content-type': 'application/x-www-from-urlencoded',
+        'accessToken': app.token
+      },
+      success: function(res) {
+        console.log(res.data);
+          if (res.data.success) {
+            that.setData({
+              inRecord: res.data.result.in,
+              outRecord: res.data.result.out
+            })
+          } else {
+            wx.showToast({
+              title: '记录获取失败',
+              icon: 'none'
+            })
+          }
+
+      }
+    })
   },
 
   /**
