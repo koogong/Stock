@@ -1,6 +1,6 @@
 // pages/stockAdd/add.js
 import Dialog from '../../dist/dialog/dialog';
-
+var app = getApp();
 Page({
 
   /**
@@ -12,21 +12,66 @@ Page({
     bottom: false,
     bottom2: false,
     list: ['60x90', '70x90', '80x90'],
-    result: []
+    result: [],
+    products: [],
+    process: [],
+    packageSum: 0,
+    numSum: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.loadProducts();
+  },
+  loadProducts:function() {
+    var that = this;
+    var url = app.serverUrl + "/stock/products";
 
+    wx.request({
+      url: url,
+      method: 'GET',
+      header: {
+        'content-type': 'application/x-www-from-urlencoded',
+        'accessToken': app.token
+      },
+      success: function(res) {
+        console.log('库存数据加载：');
+        console.log(res.data);
+        if (res.data.success) {
+          that.setData({
+            products: res.data.result
+          })
+        } else {
+          wx.showToast({
+            title: '数据获取失败',
+            icon: 'none'
+          })
+        }
+      }
+    })
+  },
+  toProcess:function(e) {
+    this.setData({
+      process: this.data.process.concat(e.target.dataset.product)
+    });
+    console.log(this.data.process);
   },
   onChange1(e) {
     this.setData({
       value: e.detail
     });
   },
-
+  /*
+    触发CheckBox
+  */
+  onChange(event) {
+    const { key } = event.currentTarget.dataset;
+    console.log(event);
+    this.setData({ [key]: event.detail });
+    console.log(this.data.result);
+  },
   /**
     搜索关键词获取产品信息并且选中
   **/
@@ -80,22 +125,11 @@ Page({
         break;
     }
   },
-  onChange(event) {
-    const { key } = event.currentTarget.dataset;
-    console.log(event);
-    this.setData({ [key]: event.detail });
-    console.log(this.data.result);
-  },
   toggle(event) {
     const { name } = event.currentTarget.dataset;
     const checkbox = this.selectComponent(`.checkboxes-${name}`);
     checkbox.toggle();
   },
-
-
-
-
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

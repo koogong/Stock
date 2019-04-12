@@ -152,3 +152,9 @@
 .header-class {
   color: #fff;
 }
+
+.none_products {
+  margin: 0 auto;
+  padding-top: 50rpx;
+  text-align: center;
+}

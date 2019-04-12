@@ -12,18 +12,22 @@
     <view slot="action" bind:tap="onSearch">搜索</view>
   </van-search>
 
-  <view>
+  <view class="none_products" wx:if="{{products.length==0}}">
+    暂无数据
+  </view>
+  <view wx:else>
     <van-checkbox-group value="{{ result }}" data-key="result" bind:change="onChange">
       <view class="box"
-            wx:for="{{list}}"
-            wx:key="{{index}}">
-        <van-panel title="{{item}}" status="库存: 0">
-          <view class="box-view">
-            <view class="whorl">螺纹: 默认</view>
-            <view class="seam">止口: 默认</view>
-            <view class="minus">负丝: 默认</view>
+            wx:for="{{products}}"
+            wx:item="item"
+            wx:key="index">
+        <van-panel title="{{item.product.type}}" status="库存: {{item.packages}}">
+          <view class="box-view" data-product="{{item}}">
+            <view class="whorl">螺纹: {{item.product.whorl}}</view>
+            <view class="seam">止口: {{item.product.seam}}</view>
+            <view class="minus">负丝: {{item.product.minus}}</view>
             <view class="select">
-              <van-checkbox name="{{ item }}"></van-checkbox>
+              <van-checkbox name="{{index}}"></van-checkbox>
             </view>
           </view>
         </van-panel>
@@ -45,19 +49,19 @@
     >
     <view class="bottomPopup">
 
-      <van-row wx:for="{{result}}" wx:key="{{index}}">
+      <van-row wx:for="{{result}}" wx:item="item" wx:key="index">
         <van-col span="22" offset="1" class="van-col">
           <view class="col">
-            <view class="type">{{item}}</view>
-            <view class="whorl">30x2</view>
-            <view class="seam">止口: 37x14</view>
-            <view class="minus">负丝: -4</view>
-            <view class="amount">库存: 2</view>
+            <view class="type">{{products[index].product.type}}</view>
+            <view class="whorl">{{products[index].product.whorl}}</view>
+            <view class="seam">止口: {{products[index].product.seam}}</view>
+            <view class="minus">负丝: {{products[index].product.minus}}</view>
+            <view class="amount">库存: {{products[index].packages}}</view>
           </view>
           <van-stepper class="stepper" value="{{ 1 }}" bind:change="onChange" />
         </van-col>
       </van-row>
-      <van-panel title="合计: 30件" desc="总数: 300个" status="状态" use-footer-slot>
+      <van-panel title="合计: {{packageSum}}件" desc="总数: {{numSum}}个" status="状态" use-footer-slot>
         <view slot="footer" class="footer">
           <!-- <van-button size="small">按钮</van-button> -->
           <van-button class="bottomBtn" size="normal" bind:click="toggleBottomPopup">关闭</van-button>
@@ -87,19 +91,19 @@
     >
     <view class="bottomPopup2">
 
-      <van-row wx:for="{{result}}" wx:key="{{index}}">
+      <van-row wx:for="{{products}}" wx:key="{{index}}">
         <van-col span="22" offset="1" class="van-col">
           <view class="col">
-            <view class="type">{{item}}</view>
-            <view class="whorl">30x2</view>
-            <view class="seam">止口: 37x14</view>
-            <view class="minus">负丝: -4</view>
-            <view class="amount">库存: 2</view>
+            <view class="type">{{item[index].product.type}}</view>
+            <view class="whorl">{{item[index].product.whorl}}</view>
+            <view class="seam">止口: {{item[index].product.seam}}</view>
+            <view class="minus">负丝: {{item[index].product.minus}}</view>
+            <view class="amount">库存: {{item[index].packages}}</view>
           </view>
           <van-stepper class="stepper" value="{{ 1 }}" bind:change="onChange" />
         </van-col>
       </van-row>
-      <van-panel title="合计: 30件" desc="总数: 300个" status="状态" use-footer-slot>
+      <van-panel title="合计: {{packageSum}}件" desc="总数: {{numSum}}个" status="状态" use-footer-slot>
         <view slot="footer" class="footer">
           <!-- <van-button size="small">按钮</van-button> -->
           <van-button class="bottomBtn" size="normal" bind:click="toggleBottomPopup2">关闭</van-button>
