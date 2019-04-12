@@ -52,25 +52,49 @@ Page({
       }
     })
   },
-  toProcess:function(e) {
-    this.setData({
-      process: this.data.process.concat(e.target.dataset.product)
-    });
-    console.log(this.data.process);
-  },
+
   onChange1(e) {
     this.setData({
       value: e.detail
     });
   },
-  /*
-    触发CheckBox
-  */
-  onChange(event) {
+  onSelect(event) {
     const { key } = event.currentTarget.dataset;
-    console.log(event);
     this.setData({ [key]: event.detail });
-    console.log(this.data.result);
+  },
+  /*
+    触发步进器按钮Stepper
+  */
+  onStepper(event) {
+    var map = {
+        'index': event.target.dataset.index,
+        'id':event.target.dataset.id,
+        'piece': event.target.dataset.piece,
+        'package': event.detail
+    }
+    this.pushMap(map);
+  },
+  pushMap(event) {
+    console.log('PushMap');
+    var process = this.data.process;
+    // TODO 2019-4-12 每次点击步进器将新的产品信息添加到process数组中，而重复的则覆盖
+    process[event.index] = event;
+    this.setData({
+      process: process
+    })
+    console.log(this.data.process);
+  },
+  onPlus(event) {
+    console.log('Plus');
+    this.setData({
+      packageSum: this.data.packageSum + 1
+    })
+  },
+  onMinus(event) {
+    console.log('Minus');
+    this.setData({
+      packageSum: this.data.packageSum - 1
+    })
   },
   /**
     搜索关键词获取产品信息并且选中
@@ -99,12 +123,14 @@ Page({
   onBlur: function(event) {
 
   },
-  toggleBottomPopup: function() {
+  // 入库按钮
+  toggleBottomPopupIn: function() {
     this.setData({
       bottom: !this.data.bottom
     })
   },
-  toggleBottomPopup2: function() {
+  // 出库按钮
+  toggleBottomPopupOut: function() {
     this.setData({
       bottom2: !this.data.bottom2
     })

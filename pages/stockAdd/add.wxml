@@ -16,7 +16,7 @@
     暂无数据
   </view>
   <view wx:else>
-    <van-checkbox-group value="{{ result }}" data-key="result" bind:change="onChange">
+    <van-checkbox-group value="{{ result }}" data-key="result" bind:change="onSelect">
       <view class="box"
             wx:for="{{products}}"
             wx:item="item"
@@ -36,7 +36,7 @@
   </view>
 
 <!-- 入库按钮 -->
-  <view class="bottom-box" bindtap="toggleBottomPopup">
+  <view class="bottom-box" bindtap="toggleBottomPopupIn">
     <view class='bottom-btn' bindtap="">
       <view class="toPutStock">入库</view>
     </view>
@@ -45,26 +45,26 @@
     show="{{bottom}}"
     position="bottom"
     custom-class="bottom"
-    bind:close="toggleBottomPopup"
+    bind:close="toggleBottomPopupIn"
     >
     <view class="bottomPopup">
 
       <van-row wx:for="{{result}}" wx:item="item" wx:key="index">
         <van-col span="22" offset="1" class="van-col">
           <view class="col">
-            <view class="type">{{products[index].product.type}}</view>
-            <view class="whorl">{{products[index].product.whorl}}</view>
-            <view class="seam">止口: {{products[index].product.seam}}</view>
-            <view class="minus">负丝: {{products[index].product.minus}}</view>
-            <view class="amount">库存: {{products[index].packages}}</view>
+            <view class="type">{{products[item].product.type}}</view>
+            <view class="whorl">{{products[item].product.whorl}}</view>
+            <view class="seam">止口: {{products[item].product.seam}}</view>
+            <view class="minus">负丝: {{products[item].product.minus}}</view>
+            <view class="amount">库存: {{products[item].packages}}</view>
           </view>
-          <van-stepper class="stepper" value="{{ 1 }}" bind:change="onChange" />
+          <van-stepper class="stepper" value="{{ 0 }}" data-index="{{index}}" data-id="{{products[item].product.id}}" data-piece="{{products[item].product.piece}}" bind:change="onStepper" bind:plus="onPlus" bind:minus="onMinus"/>
         </van-col>
       </van-row>
       <van-panel title="合计: {{packageSum}}件" desc="总数: {{numSum}}个" status="状态" use-footer-slot>
         <view slot="footer" class="footer">
           <!-- <van-button size="small">按钮</van-button> -->
-          <van-button class="bottomBtn" size="normal" bind:click="toggleBottomPopup">关闭</van-button>
+          <van-button class="bottomBtn" size="normal" bind:click="toggleBottomPopupIn">关闭</van-button>
           <van-button class="bottomBtn" size="normal" type="danger">入库</van-button>
         </view>
       </van-panel>
@@ -79,7 +79,7 @@
   </van-popup>
 
   <!-- 出库按钮 -->
-  <view class='bottom-btn outStock' bindtap="toggleBottomPopup2">
+  <view class='bottom-btn outStock' bindtap="toggleBottomPopupOut">
     <view class="toOutStock">出库</view>
   </view>
 
@@ -87,26 +87,26 @@
     show="{{bottom2}}"
     position="bottom"
     custom-class="bottom"
-    bind:close="toggleBottomPopup2"
+    bind:close="toggleBottomPopupOut"
     >
-    <view class="bottomPopup2">
+    <view class="bottomPopupOut">
 
-      <van-row wx:for="{{products}}" wx:key="{{index}}">
+      <van-row wx:for="{{result}}" wx:key="{{index}}">
         <van-col span="22" offset="1" class="van-col">
           <view class="col">
-            <view class="type">{{item[index].product.type}}</view>
-            <view class="whorl">{{item[index].product.whorl}}</view>
-            <view class="seam">止口: {{item[index].product.seam}}</view>
-            <view class="minus">负丝: {{item[index].product.minus}}</view>
-            <view class="amount">库存: {{item[index].packages}}</view>
+            <view class="type">{{products[item].product.type}}</view>
+            <view class="whorl">{{products[item].product.whorl}}</view>
+            <view class="seam">止口: {{products[item].product.seam}}</view>
+            <view class="minus">负丝: {{products[item].product.minus}}</view>
+            <view class="amount">库存: {{products[item].packages}}</view>
           </view>
-          <van-stepper class="stepper" value="{{ 1 }}" bind:change="onChange" />
+          <van-stepper class="stepper" value="{{ 0 }}" bind:change="onStepper" />
         </van-col>
       </van-row>
       <van-panel title="合计: {{packageSum}}件" desc="总数: {{numSum}}个" status="状态" use-footer-slot>
         <view slot="footer" class="footer">
           <!-- <van-button size="small">按钮</van-button> -->
-          <van-button class="bottomBtn" size="normal" bind:click="toggleBottomPopup2">关闭</van-button>
+          <van-button class="bottomBtn" size="normal" bind:click="toggleBottomPopupOut">关闭</van-button>
           <van-button class="bottomBtn" size="normal" type="danger">出库</van-button>
         </view>
       </van-panel>
