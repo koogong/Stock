@@ -15,8 +15,10 @@ Page({
     result: [],
     products: [],
     process: [],
+    packMap: [], // 产品索引-产品件数
     packageSum: 0,
-    numSum: 0
+    numSum: 0,
+    count: 0
   },
 
   /**
@@ -60,38 +62,93 @@ Page({
   },
   onSelect(event) {
     const { key } = event.currentTarget.dataset;
+    var products = this.data.products;
+
+
+    var temp = [];
+
     this.setData({ [key]: event.detail });
+
+    var result = this.data.result;
+    // 当 result 为空清空所有相关数据
+    if(this.data.result.length == 0) {
+      this.setData({
+        packageSum: 0,
+        numSum: 0,
+        PackMap: [],
+        count: 0,
+      })
+    } else { // 将 result 中存在数据至 temp
+        result.map((item) => {
+          var map = {
+            'index' : item,
+            'package' : 0
+          }
+          temp.push(map);
+        })
+    }
+    var packMap = this.data.packMap;
+    // 减少了选中的选项,当packMap大于Temp时，那么则会将packMap中与temp中相等的替换temp中后将temp代替全局变量packMap
+    // 如果取出if语句则会出现index不存在的问题
+    if (packMap.length > temp.length) {
+        console.log("Reduce");
+        for(var i = 0; i < temp.length; i++) {
+          for(var j = 0; j < packMap.length; j++) {
+            if (temp[i].index == packMap[j].index) {
+                temp[i] = packMap[j];
+            }
+          }
+        }
+    } else if(packMap.length < temp.length) {
+        console.log("Increment");
+        for (var i = 0; i < temp.length; i++) {
+          for (var j = 0; i < packMap.length; i++) {
+            if (temp[i].index == packMap[j].index) {
+                temp[i] = packMap[j];
+            }
+          }
+        }
+    }
+
+    this.setData({
+      packMap: temp
+    })
+
+    console.log(this.data.result);
+    console.log('PackageSum ' + this.data.packageSum);
+    console.log('PackMap :');
+    console.log(this.data.packMap);
+
   },
   /*
     触发步进器按钮Stepper
   */
   onStepper(event) {
-    var map = {
-        'index': event.target.dataset.index,
-        'id':event.target.dataset.id,
-        'piece': event.target.dataset.piece,
-        'package': event.detail
-    }
-    this.pushMap(map);
-  },
-  pushMap(event) {
-    console.log('PushMap');
-    var process = this.data.process;
-    // TODO 2019-4-12 每次点击步进器将新的产品信息添加到process数组中，而重复的则覆盖
-    process[event.index] = event;
-    this.setData({
-      process: process
-    })
-    console.log(this.data.process);
+      var packMap = this.data.packMap
+      console.log("触发步进器");
+      console.log(event.target.dataset.index + " : " + event.detail);
+
+      if(packMap.length != 0) {
+        for(var i = 0 ; i < packMap.length; i++) {
+          if (packMap[i].index == event.target.dataset.index) {
+            packMap[i].package = event.detail;
+          }
+        }
+      }
+
+      this.setData({
+        packMap: packMap
+      })
+      console.log("PackMap : ");
+      console.log(packMap);
   },
   onPlus(event) {
-    console.log('Plus');
+
     this.setData({
       packageSum: this.data.packageSum + 1
     })
   },
   onMinus(event) {
-    console.log('Minus');
     this.setData({
       packageSum: this.data.packageSum - 1
     })
@@ -125,8 +182,30 @@ Page({
   },
   // 入库按钮
   toggleBottomPopupIn: function() {
+    var result = this.data.result;
+    var packMap = this.data.packMap;
+    var temp = [];
+    var packSum = 0;
+    var numSum = 0;
+
+    // 将result中存在的索引存入新的数组中
+    // packMap中的index对应result的值
+    console.log(packMap);
+    result.map((item) => {
+      packMap.map((pack) => {
+        if (pack.index == item) {
+            temp.push(pack);
+        }
+      })
+    })
+
+    console.log("Button:");
+    console.log(temp);
+
     this.setData({
-      bottom: !this.data.bottom
+      bottom: !this.data.bottom,
+      packMap: temp,
+      packageSum: packSum
     })
   },
   // 出库按钮
