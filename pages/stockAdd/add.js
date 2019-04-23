@@ -171,14 +171,28 @@ Page({
       })
   },
   onPlus(event) {
+    var num = this.data.numSum + event.target.dataset.piece;
     this.setData({
-      packageSum: this.data.packageSum + 1
+      packageSum: this.data.packageSum + 1,
+      numSum: num
     })
   },
   onMinus(event) {
-    this.setData({
-      packageSum: this.data.packageSum - 1
-    })
+
+    var num = this.data.numSum - event.target.dataset.piece;
+    if (num < 0) {
+        wx.showToast({
+          title: 'Error',
+          icon: 'none'
+        })
+    } else {
+      this.setData({
+        packageSum: this.data.packageSum - 1,
+        numSum: num
+      })
+    }
+
+
   },
   onStepper2(event) {
       var packMap2 = this.data.packMap2;
@@ -204,14 +218,26 @@ Page({
       })
   },
   onPlus2(event) {
+    var num2 = this.data.numSum2 + event.target.dataset.piece;
     this.setData({
-      packageSum2: this.data.packageSum2 + 1
+      packageSum2: this.data.packageSum2 + 1,
+      numSum2: num2
     })
   },
   onMinus2(event) {
-    this.setData({
-      packageSum2: this.data.packageSum2 - 1
-    })
+
+    var num2 = this.data.numSum2 - event.target.dataset.piece;
+    if (num2 < 0) {
+        wx.showToast({
+          title: 'Error',
+          icon: 'none'
+        })
+    } else {
+      this.setData({
+        packageSum2: this.data.packageSum2 - 1,
+        numSum2: num2
+      })
+    }
   },
   /**
     搜索关键词获取产品信息并且选中
