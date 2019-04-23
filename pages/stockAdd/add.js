@@ -16,8 +16,11 @@ Page({
     products: [],
     process: [],
     packMap: [], // 产品索引-产品件数
+    packMap2: [],
     packageSum: 0,
+    packageSum2: 0,
     numSum: 0,
+    numSum2: 0,
     count: 0
   },
 
@@ -66,6 +69,7 @@ Page({
 
 
     var temp = [];
+    var temp2 = [];
 
     this.setData({ [key]: event.detail });
 
@@ -74,8 +78,11 @@ Page({
     if(this.data.result.length == 0) {
       this.setData({
         packageSum: 0,
+        packageSum2: 0,
         numSum: 0,
-        PackMap: [],
+        numSum2: 0,
+        packMap: [],
+        packMap2: [],
         count: 0,
       })
     } else { // 将 result 中存在数据至 temp
@@ -85,6 +92,7 @@ Page({
             'package' : 0
           }
           temp.push(map);
+          temp2.push(map);
         })
     }
     var packMap = this.data.packMap;
@@ -109,41 +117,60 @@ Page({
           }
         }
     }
-
+    var packMap2 = this.data.packMap2;
+    // 减少了选中的选项,当packMap大于Temp时，那么则会将packMap中与temp中相等的替换temp中后将temp代替全局变量packMap
+    // 如果取出if语句则会出现index不存在的问题
+    if (packMap2.length > temp2.length) {
+        console.log("Reduce");
+        for(var i = 0; i < temp2.length; i++) {
+          for(var j = 0; j < packMap2.length; j++) {
+            if (temp2[i].index == packMap2[j].index) {
+                temp2[i] = packMap2[j];
+            }
+          }
+        }
+    } else if(packMap2.length < temp2.length) {
+        console.log("Increment");
+        for (var i = 0; i < temp2.length; i++) {
+          for (var j = 0; j < packMap2.length; j++) {
+            if (temp2[i].index == packMap2[j].index) {
+                temp2[i] = packMap2[j];
+            }
+          }
+        }
+    }
     this.setData({
-      packMap: temp
+      packMap: temp,
+      packMap2: temp2
     })
-
-    console.log(this.data.result);
-    console.log('PackageSum ' + this.data.packageSum);
-    console.log('PackMap :');
-    console.log(this.data.packMap);
-
   },
   /*
     触发步进器按钮Stepper
   */
   onStepper(event) {
-      var packMap = this.data.packMap
+      var packMap = this.data.packMap2;
       console.log("触发步进器");
+      var temp = [];
       console.log(event.target.dataset.index + " : " + event.detail);
 
       if(packMap.length != 0) {
         for(var i = 0 ; i < packMap.length; i++) {
           if (packMap[i].index == event.target.dataset.index) {
-            packMap[i].package = event.detail;
+            var map = {
+              'index': packMap[i].index,
+              'package': event.detail
+            }
+            temp.push(map); // 如果不是用temp来新建一个数组则会导致packMap&packMap2都会同步
+          } else {
+            temp.push(packMap[i]);
           }
         }
       }
-
       this.setData({
-        packMap: packMap
+        packMap: temp
       })
-      console.log("PackMap : ");
-      console.log(packMap);
   },
   onPlus(event) {
-
     this.setData({
       packageSum: this.data.packageSum + 1
     })
@@ -151,6 +178,39 @@ Page({
   onMinus(event) {
     this.setData({
       packageSum: this.data.packageSum - 1
+    })
+  },
+  onStepper2(event) {
+      var packMap2 = this.data.packMap2;
+      var temp = [];
+      console.log("触发步进器2");
+      console.log(event.target.dataset.index + " : " + event.detail);
+
+      if(packMap2.length != 0) {
+        for(var i = 0 ; i < packMap2.length; i++) {
+          if (packMap2[i].index == event.target.dataset.index) {
+            var map = {
+              'index': packMap2[i].package,
+              'package': event.detail
+            }
+            temp.push(map); // 如果不是用temp来新建一个数组则会导致packMap&packMap2都会同步
+          } else {
+            temp.push(packMap2[i]);
+          }
+        }
+      }
+      this.setData({
+        packMap2: temp
+      })
+  },
+  onPlus2(event) {
+    this.setData({
+      packageSum2: this.data.packageSum2 + 1
+    })
+  },
+  onMinus2(event) {
+    this.setData({
+      packageSum2: this.data.packageSum2 - 1
     })
   },
   /**
@@ -199,6 +259,11 @@ Page({
       })
     })
 
+    // 计算过滤后的总件数
+    temp.map((item) => {
+      packSum += item.package;
+    })
+
     console.log("Button:");
     console.log(temp);
 
@@ -210,8 +275,30 @@ Page({
   },
   // 出库按钮
   toggleBottomPopupOut: function() {
+    var result = this.data.result;
+    var packMap2 = this.data.packMap2;
+    var temp2 = [];
+    var packSum2 = 0;
+    var numSum2 = 0;
+
+    console.log(packMap2);
+    result.map((item) => {
+      packMap2.map((pack) => {
+        if (pack.index == item) {
+            temp2.push(pack);
+        }
+      })
+    })
+    temp2.map((item) => {
+      packSum2 += item.package;
+    })
+    console.log("Button2 : ");
+    console.log(temp2);
+
     this.setData({
-      bottom2: !this.data.bottom2
+      bottom2: !this.data.bottom2,
+      packMap2: temp2,
+      packageSum2: packSum2
     })
   },
   onClose(event) {
