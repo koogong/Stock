@@ -148,27 +148,30 @@ Page({
     触发步进器按钮Stepper
   */
   onStepper(event) {
-      var packMap = this.data.packMap2;
+      var packMap = this.data.packMap;
       console.log("触发步进器");
       var temp = [];
       console.log(event.target.dataset.index + " : " + event.detail);
 
+      // TODO: 数据不同步：多选中会导致其他件数为0
       if(packMap.length != 0) {
-        for(var i = 0 ; i < packMap.length; i++) {
-          if (packMap[i].index == event.target.dataset.index) {
-            var map = {
-              'index': packMap[i].index,
-              'package': event.detail
-            }
-            temp.push(map); // 如果不是用temp来新建一个数组则会导致packMap&packMap2都会同步
-          } else {
-            temp.push(packMap[i]);
+        var index = event.target.dataset.index;
+        packMap.map((item) => {
+          if (item.index != index) {
+              temp.push(item); // 如果不是用temp来新建一个数组则会导致packMap&packMap2都会同步
+          } else if(item.index == index) {
+              var map = {
+                'index': index,
+                'package': event.detail
+              }
+              temp.push(map);
           }
-        }
+        })
       }
       this.setData({
         packMap: temp
       })
+      console.log(temp);
   },
   onPlus(event) {
     var num = this.data.numSum + event.target.dataset.piece;
@@ -201,17 +204,18 @@ Page({
       console.log(event.target.dataset.index + " : " + event.detail);
 
       if(packMap2.length != 0) {
-        for(var i = 0 ; i < packMap2.length; i++) {
-          if (packMap2[i].index == event.target.dataset.index) {
-            var map = {
-              'index': packMap2[i].package,
-              'package': event.detail
-            }
-            temp.push(map); // 如果不是用temp来新建一个数组则会导致packMap&packMap2都会同步
-          } else {
-            temp.push(packMap2[i]);
+        var index = event.target.dataset.index;
+        packMap2.map((item) => {
+          if (item.index != index) {
+              temp.push(item); // 如果不是用temp来新建一个数组则会导致packMap&packMap2都会同步
+          } else if(item.index == index) {
+              var map = {
+                'index': index,
+                'package': event.detail
+              }
+              temp.push(map);
           }
-        }
+        })
       }
       this.setData({
         packMap2: temp
@@ -276,7 +280,6 @@ Page({
 
     // 将result中存在的索引存入新的数组中
     // packMap中的index对应result的值
-    console.log(packMap);
     result.map((item) => {
       packMap.map((pack) => {
         if (pack.index == item) {
@@ -284,7 +287,6 @@ Page({
         }
       })
     })
-
     // 计算过滤后的总件数
     temp.map((item) => {
       packSum += item.package;
@@ -307,7 +309,6 @@ Page({
     var packSum2 = 0;
     var numSum2 = 0;
 
-    console.log(packMap2);
     result.map((item) => {
       packMap2.map((pack) => {
         if (pack.index == item) {
