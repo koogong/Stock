@@ -99,7 +99,7 @@ Page({
     // 减少了选中的选项,当packMap大于Temp时，那么则会将packMap中与temp中相等的替换temp中后将temp代替全局变量packMap
     // 如果取出if语句则会出现index不存在的问题
     if (packMap.length > temp.length) {
-        console.log("Reduce");
+        // console.log("Reduce");
         for(var i = 0; i < temp.length; i++) {
           for(var j = 0; j < packMap.length; j++) {
             if (temp[i].index == packMap[j].index) {
@@ -108,7 +108,7 @@ Page({
           }
         }
     } else if(packMap.length < temp.length) {
-        console.log("Increment");
+        // console.log("Increment");
         for (var i = 0; i < temp.length; i++) {
           for (var j = 0; i < packMap.length; i++) {
             if (temp[i].index == packMap[j].index) {
@@ -121,7 +121,7 @@ Page({
     // 减少了选中的选项,当packMap大于Temp时，那么则会将packMap中与temp中相等的替换temp中后将temp代替全局变量packMap
     // 如果取出if语句则会出现index不存在的问题
     if (packMap2.length > temp2.length) {
-        console.log("Reduce");
+        // console.log("Reduce");
         for(var i = 0; i < temp2.length; i++) {
           for(var j = 0; j < packMap2.length; j++) {
             if (temp2[i].index == packMap2[j].index) {
@@ -130,7 +130,7 @@ Page({
           }
         }
     } else if(packMap2.length < temp2.length) {
-        console.log("Increment");
+        // console.log("Increment");
         for (var i = 0; i < temp2.length; i++) {
           for (var j = 0; j < packMap2.length; j++) {
             if (temp2[i].index == packMap2[j].index) {
@@ -149,9 +149,7 @@ Page({
   */
   onStepper(event) {
       var packMap = this.data.packMap;
-      console.log("触发步进器");
       var temp = [];
-      console.log(event.target.dataset.index + " : " + event.detail);
 
       // TODO: 数据不同步：多选中会导致其他件数为0
       if(packMap.length != 0) {
@@ -171,7 +169,7 @@ Page({
       this.setData({
         packMap: temp
       })
-      console.log(temp);
+
   },
   onPlus(event) {
     var num = this.data.numSum + event.target.dataset.piece;
@@ -200,8 +198,6 @@ Page({
   onStepper2(event) {
       var packMap2 = this.data.packMap2;
       var temp = [];
-      console.log("触发步进器2");
-      console.log(event.target.dataset.index + " : " + event.detail);
 
       if(packMap2.length != 0) {
         var index = event.target.dataset.index;
@@ -243,6 +239,30 @@ Page({
       })
     }
   },
+
+
+  onStock(event) {
+    var id = event.target.id;
+    var products = this.data.products;
+    if (id== "in") {
+      var packMap = this.data.packMap;
+      console.log("入库按钮");
+      console.log(packMap);
+
+      packMap.map((pack) => {
+        if (pack.package <= 0) {
+
+        }
+      })
+
+    } else if (id == "out") {
+      var packMap = this.data.packMap2;
+      console.log("出库按钮");
+      console.log(packMap);
+    }
+  },
+
+
   /**
     搜索关键词获取产品信息并且选中
   **/
@@ -292,9 +312,6 @@ Page({
       packSum += item.package;
     })
 
-    console.log("Button:");
-    console.log(temp);
-
     this.setData({
       bottom: !this.data.bottom,
       packMap: temp,
@@ -319,8 +336,6 @@ Page({
     temp2.map((item) => {
       packSum2 += item.package;
     })
-    console.log("Button2 : ");
-    console.log(temp2);
 
     this.setData({
       bottom2: !this.data.bottom2,
