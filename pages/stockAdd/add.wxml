@@ -15,6 +15,26 @@
   <view class="none_products" wx:if="{{products.length==0}}">
     暂无数据
   </view>
+
+  <view class="search_products" wx:if="{{search_result.length != 0}}">
+    <van-checkbox-group value="{{ result }}" data-key="result" bind:chanage="onSelect">
+      <view class="box" wx:for="{{search_result}}" wx:item="item" wx:key="index">
+
+        <van-panel title="{{item.product.type}}" status="库存: {{item.packages}}">
+          <view class="box-view" data-product="{{item}}">
+            <view class="whorl">螺纹: {{item.product.whorl}}</view>
+            <view class="seam">止口: {{item.product.seam}}</view>
+            <view class="minus">负丝: {{item.product.minus}}</view>
+            <view class="select">
+              <van-checkbox name="{{index}}"></van-checkbox>
+            </view>
+          </view>
+        </van-panel>
+      </view>
+    </van-checkbox-group>
+
+  </view>
+
   <view wx:else>
     <van-checkbox-group value="{{ result }}" data-key="result" bind:change="onSelect">
       <view class="box"
@@ -65,7 +85,7 @@
         <view slot="footer" class="footer">
           <!-- <van-button size="small">按钮</van-button> -->
           <van-button class="bottomBtn" size="normal" bind:click="toggleBottomPopupIn">关闭</van-button>
-          <van-button class="bottomBtn" size="normal" type="danger">入库</van-button>
+          <van-button class="bottomBtn" size="normal" type="danger" id="in" bind:click="onStock">入库</van-button>
         </view>
       </van-panel>
     </view>
@@ -107,7 +127,7 @@
         <view slot="footer" class="footer">
           <!-- <van-button size="small">按钮</van-button> -->
           <van-button class="bottomBtn" size="normal" bind:click="toggleBottomPopupOut">关闭</van-button>
-          <van-button class="bottomBtn" size="normal" type="danger">出库</van-button>
+          <van-button class="bottomBtn" size="normal" type="danger" id="out" bind:click="onStock">出库</van-button>
         </view>
       </van-panel>
     </view>

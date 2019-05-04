@@ -14,7 +14,7 @@ Page({
     list: ['60x90', '70x90', '80x90'],
     result: [],
     products: [],
-    process: [],
+    search_result: [],
     packMap: [], // 产品索引-产品件数
     packMap2: [],
     packageSum: 0,
@@ -59,9 +59,20 @@ Page({
   },
 
   onChange1(e) {
+    var products = this.data.products;
+    var search_result = [];
+
+    console.log(e.detail);
+    products.map((item) => {
+      if (item.product.type == e.detail) {
+         console.log(item);
+         search_result.push(item);
+      }
+    })
     this.setData({
+      search_result: search_result,
       value: e.detail
-    });
+    })
   },
   onSelect(event) {
     const { key } = event.currentTarget.dataset;
@@ -269,7 +280,7 @@ Page({
   onSearch(event) {
     if (this.data.value) {
       wx.showToast({
-        title: '搜索：' + this.data.value,
+        title: this.data.value + " 不存在!",
         icon: 'none'
       });
     }
