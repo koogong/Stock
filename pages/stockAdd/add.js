@@ -252,27 +252,121 @@ Page({
   },
 
 
+  /**
+   ** 出入库按钮
+  **/
   onStock(event) {
     var id = event.target.id;
     var products = this.data.products;
+    var submit = true;
+    var that = this;
+
     if (id== "in") {
       var packMap = this.data.packMap;
-      console.log("入库按钮");
-      console.log(packMap);
+      submit = this.isSubmit(packMap);
+      // productId packages description
+      if (submit) {
+        packMap.map((item) => {
+          var info = products[item.index];
+          var url = app.serverUrl + "/stock/add?productId=" + info.product.id + "&packages=" + item.package + "&description=手机端";
+          wx.request({
+            url: url,
+            method: 'POST',
+            header: {
+              'content-type': 'application/x-www-from-urlencoded',
+              'accessToken': app.token
+            },
+            success: function(res) {
+              console.log('提交入库数据 : ');
+              console.log('ID : ' + info.product.id + ' - Package : ' + item.package);
+              if (res.data.success) {
+                console.log("数据提交成功");
+                that.loadProducts();  // 重新加载所有库存信息
+                that.setData({        // 关闭底部弹框和清理选中产品
+                  bottom: false,
+                  result: []
+                })
+                wx.showToast({
+                  'title': '入库成功'
+                })
+              } else {
+                console.log("数据提交失败");
+              }
+            }
+          })
+        })
+      }
 
-      packMap.map((pack) => {
-        if (pack.package <= 0) {
-
-        }
-      })
 
     } else if (id == "out") {
       var packMap = this.data.packMap2;
-      console.log("出库按钮");
-      console.log(packMap);
+
+      submit = this.isSubmit(packMap);
+      if (submit) {
+        packMap.map((item) => {
+          var info = products[item.index];
+          var url = app.serverUrl + "/stock/reduce?productId=" + info.product.id + "&packages=" + item.package + "&description=手机端";
+          wx.request({
+            url: url,
+            method: 'DELETE',
+            header: {
+              'content-type' : 'application/x-www-from-urlencoded',
+              'accessToken' : app.token
+            },
+            success: function(res) {
+              console.log("提交出库数据 : ");
+              console.log('ID : ' + info.product.id + ' - Package : ' + item.package);
+
+              if (res.data.success) {
+                console.log("数据提交成功");
+                that.loadProducts();
+                that.setData({
+                  bottom2: false,
+                  result: []
+                })
+                wx.showToast({
+                  'title': '出库成功'
+                })
+              } else {
+                console.log("数据提交失败");
+              }
+            },
+            fail: function(res) {
+              wx.showToast({
+                'title': '数据请求失败',
+                'icon': 'none'
+              })
+            }
+          })
+        })
+      }
+
     }
   },
 
+  isSubmit(event) {
+    var products = this.data.products;
+    var submit = true;
+    var packMap = event;
+    packMap.map((item) => {
+      if (item.package <= 0) {
+        wx.showToast({
+          'title': products[item.index].product.type + ' 件数不能为 0',
+          'icon': 'none'
+        })
+        submit = false;
+        return submit;
+      }
+    })
+    return submit;
+  },
+
+  /**
+    入库操作
+  **/
+  toInventory(event) {
+
+  },
 
   /**
     搜索关键词获取产品信息并且选中
