@@ -13,16 +13,16 @@
 
   <van-tabs bind:click="onClick"  color="#3D3C41" bind:click="onClick" >
     <van-tab title="出库" custom-class="con">
-      <view wx:if="{{inRecord.length==0}}" class="none_record">暂无数据</view>
-      <view wx:for="{{inRecord}}" wx:item="item" wx:key="index">
+      <view wx:if="{{outRecord.length==0}}" class="none_record">暂无数据</view>
+      <view wx:for="{{outRecord}}" wx:item="item" wx:key="index">
         <record-item type="{{item.product.type}}" whorl="{{item.product.whorl}}" seam="{{item.product.seam}}" minus="{{item.product.minus}}" number="{{item.packages}}" time="{{item.create_time}}" status="出库" />
       </view>
 
     </van-tab>
 
     <van-tab title="入库" custom-class="con">
-      <view wx:if="{{outRecord.length==0}}" class="none_record">暂无数据</view>
-      <view wx:for="{{outRecord}}" wx:item="item" wx:key="index">
+      <view wx:if="{{inRecord.length==0}}" class="none_record">暂无数据</view>
+      <view wx:for="{{inRecord}}" wx:item="item" wx:key="index">
         <record-item type="{{item.product.type}}" whorl="{{item.product.whorl}}" seam="{{item.product.seam}}" minus="{{item.product.minus}}" number="{{item.packages}}" time="{{item.create_time}}" status="入库" />
       </view>
     </van-tab>
