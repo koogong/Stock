@@ -1,8 +1,7 @@
 {
   "pages": [
-    "pages/stockAdd/add",
-    
     "pages/stock-bar/stock",
+    "pages/stockAdd/add",
     "pages/record/record",
     "pages/products/products",
     "pages/stockList/list",
