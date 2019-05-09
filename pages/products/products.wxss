@@ -60,7 +60,7 @@
   border: .2rpx solid rgba(0, 0, 0, .1);
   position: fixed;
   z-index: 10;
-  margin-top: 89rpx;
+  margin-top: 80rpx;
 }
 
 .select-text {
