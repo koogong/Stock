@@ -1,7 +1,7 @@
 //app.js
 App({
   serverUrl: "http://localhost:8888",
-  token: "6c5ed719357c4b1aa949950acb98ddbe",
+  token: "38dcf89b575142838047b2accf7e819a",
   data: {
     identity: "",
     index: -1,

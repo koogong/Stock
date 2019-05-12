@@ -9,7 +9,7 @@
   >
     <view slot="action" bind:tap="onSearch">搜索</view>
   </van-search>
-<!-- 
+<!--
   <view class="select">
       <view class="select-item">
           <image class="select-img" src="../resources/images/stockList/sort.png"/>
@@ -34,8 +34,11 @@
   </view>
 
   <view class="content">
-    <record-cell type="60x90" whorl="35x2" seam="37x14" minus="-3~-5" number="12"/>
-    <record-cell type="180x180" whorl="30x2" seam="默认" minus="默认" number="12"/>
+    <view wx:for="{{products}}" wx:item="item" wx:key="idnex">
+      <record-cell type="{{item.product.type}}" whorl="{{item.product.whorl}}" seam="{{item.product.seam}}" minus="{{item.product.minus}}" number="{{item.packages}}"/>
+    </view>
+    <!-- <record-cell type="60x90" whorl="35x2" seam="37x14" minus="-3~-5" number="12"/>
+    <record-cell type="180x180" whorl="30x2" seam="默认" minus="默认" number="12"/> -->
   </view>
 
 

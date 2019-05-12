@@ -1,18 +1,58 @@
 // pages/stockList/list.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    value: ''
+    value: '',
+    products: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.loadProducts();
+  },
 
+  /*
+    加载产品信息
+  */
+  loadProducts: function() {
+    var that = this;
+    var url = app.serverUrl + "/stock/products";
+
+    wx.request({
+      url: url,
+      method: 'GET',
+      header: {
+        'content-type': 'application/x-www-from-urlencoded',
+        'accessToken': app.token
+      },
+      success: function(res) {
+        console.log('库存数据加载: ');
+        console.log(res.data);
+
+        if (res.data.success) {
+            that.setData({
+              products: res.data.result
+            })
+        } else {
+          wx.showToast({
+            'title': '数据获取失败',
+            'icon:': 'none'
+          })
+        }
+
+      }, fail: function(res) {
+        wx.showToast({
+          'title': '数据请求失败',
+          'icon': 'none'
+        })
+      }
+    })
   },
 
   /**
